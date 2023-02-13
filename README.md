@@ -1,10 +1,10 @@
 # CG 2022/2023
 
-## Group T0xG0y
+## Group T10G03
 | Name             | Number    | E-Mail             |
 | ---------------- | --------- | ------------------ |
-| John Doe         | 201901010 | ...                |
-| Jane Doe         | 201901011 | ...                |
+| André Ávila        | 202006767 | up202006767@edu.fe.up.pt                |
+| Mariana Rocha         | 202004656|  up202004656@edu.fe.up.pt                 |
 
 ----
 
