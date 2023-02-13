@@ -23,6 +23,9 @@ export class MyInterface extends CGFinterface {
         //Slider element in GUI
         this.gui.add(this.scene, 'scaleFactor', 0.1, 5).name('Scale Factor');
 
+        //Checkbox to show/hid objects
+        this.gui.add(this.scene, 'showMyParallelogram').name('MyParallelogram');
+
         return true;
     }
 }
