@@ -42,19 +42,83 @@ export class MyTangram extends CGFobject {
 	}
 
     display() {
+        const SQRT2 = Math.sqrt(2)
+        const PI = Math.PI
+        
+        
+        
         // Diamond
         this.scene.pushMatrix()
+
+        this.scene.translate(0, SQRT2/2, 0)
+        this.scene.rotate(0.25*PI, 0, 0, 1);
 
         this.diamond.display()
 
         this.scene.popMatrix()
 
-        // this.parallelogram.display()
-        // this.triangle.display()
-        // this.triangle_small1.display()
-        // this.triangle_small2.display()
-        // this.triangle_big1.display()
-        // this.triangle_big2.display()
+        // Parallelogram
+        this.scene.pushMatrix()
+        
+        this.scene.translate(-SQRT2-3, SQRT2/2, 0)
+        this.scene.scale(1, 1, 1)
+
+        this.parallelogram.display()
+
+        this.scene.popMatrix()
+
+        // Triangle
+        this.scene.pushMatrix()
+        
+        this.scene.translate(1+SQRT2/2, 1- (2-SQRT2), 0)
+        this.scene.scale(1, 1, 1);
+
+        this.triangle.display()
+
+        this.scene.popMatrix()
+
+        // Triangle Small 1
+        this.scene.pushMatrix()
+        
+        this.scene.translate(-4, 2, 0)
+        this.scene.scale(1, 1, 1);
+        this.scene.rotate(0.75*PI, 0, 0, 1);
+
+        this.triangle_small1.display()
+
+        this.scene.popMatrix()
+
+        // Triangle Small 2
+        this.scene.pushMatrix()
+        
+        this.scene.translate(-SQRT2, SQRT2/2, 0)
+        this.scene.scale(1, 1, 1);
+        this.scene.rotate(1.75*PI, 0, 0, 1);
+
+        this.triangle_small2.display()
+
+        this.scene.popMatrix()
+
+        // Triangle Big 1
+        this.scene.pushMatrix()
+        
+        this.scene.translate(3*SQRT2/2, 0, 0)
+        this.scene.scale(1, 1, 1);
+        this.scene.rotate(1.75*PI, 0, 0, 1);
+
+        this.triangle_big1.display()
+
+        this.scene.popMatrix()
+
+        // Triangle Big 2
+        this.scene.pushMatrix()
+        
+        this.scene.translate(3*SQRT2/2 + 2*SQRT2, -SQRT2/2, 0)
+        this.scene.scale(1, 1, 1);
+        this.scene.rotate(0.75*PI, 0, 0, 1);
+
+
+        this.triangle_big2.display()
     }
 }
 
