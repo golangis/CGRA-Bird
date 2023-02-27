@@ -44,14 +44,35 @@ export class MyTangram extends CGFobject {
     display() {
         const SQRT2 = Math.sqrt(2)
         const PI = Math.PI
-        
+
+        let Tx = 0
+        let Ty = SQRT2/2
+        let Tz = 0
+
+        let ang = 0.25*PI
+
+
+        let diamond_translate = [
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            Tx, Ty, Tz, 1
+        ]
+
+        let diamond_rotate = [
+            Math.cos(ang), -Math.sin(ang), 0, 0,
+            Math.sin(ang), Math.cos(ang), 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1
+        ]
         
         
         // Diamond
         this.scene.pushMatrix()
 
-        this.scene.translate(0, SQRT2/2, 0)
-        this.scene.rotate(0.25*PI, 0, 0, 1);
+        this.scene.multMatrix(diamond_translate)
+        this.scene.multMatrix(diamond_rotate)
+
 
         this.diamond.display()
 
@@ -62,6 +83,7 @@ export class MyTangram extends CGFobject {
         
         this.scene.translate(-SQRT2-3, SQRT2/2, 0)
         this.scene.scale(1, 1, 1)
+        this.scene.rotate(PI, 0, 0, 0)
 
         this.parallelogram.display()
 
