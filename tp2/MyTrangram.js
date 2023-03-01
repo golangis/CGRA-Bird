@@ -80,7 +80,7 @@ export class MyTangram extends CGFobject {
         // Parallelogram
         this.scene.pushMatrix()
         
-        this.scene.translate(-SQRT2, SQRT2/4, 0)
+        this.scene.translate(-SQRT2/2-SQRT2+1, SQRT2-1, 0)
         this.scene.scale(-1, 1, 1)
         //this.scene.rotate(PI, 1, 0, 0)
 
@@ -101,7 +101,7 @@ export class MyTangram extends CGFobject {
         // Triangle Small 1
         this.scene.pushMatrix()
         
-        this.scene.translate(-4, 2-SQRT2, 0)
+        this.scene.translate(-2*SQRT2+1-2, SQRT2/2+SQRT2-1, 0)
         this.scene.scale(1, 1, 1);
         this.scene.rotate(0.75*PI, 0, 0, 1);
 
