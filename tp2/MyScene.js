@@ -111,8 +111,8 @@ export class MyScene extends CGFscene {
 
     this.translate(0.5, 0.5, 0.5)
 
-    this.unitCube.display()
-    //this.unitCubeQuad.display()
+    //this.unitCube.display()
+    this.unitCubeQuad.display()
 
     this.popMatrix()
 
