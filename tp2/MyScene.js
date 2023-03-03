@@ -109,10 +109,10 @@ export class MyScene extends CGFscene {
 
     this.pushMatrix()
 
-    this.translate(0, 0.5, 0)
+    this.translate(0.5, 0.5, 0.5)
 
-    //this.unitCube.display()
-    this.unitCubeQuad.display()
+    this.unitCube.display()
+    //this.unitCubeQuad.display()
 
     this.popMatrix()
 
