@@ -90,14 +90,31 @@ export class MyScene extends CGFscene {
       1.0,
     ];
 
+    const SQRT2 = Math.sqrt(2)
+    const PI = Math.PI
+
     this.multMatrix(sca);
 
     // ---- BEGIN Primitive drawing section
 
+    this.pushMatrix()
+
+    this.translate(2*SQRT2+1 + SQRT2/2, 0, SQRT2+SQRT2/3)
+    this.scale(1, 1, 1);
+    this.rotate(-PI/2, 1, 0, 0);
+
     if (this.showMyTangram) this.tangram.display()
 
-    //this.unitCube.display()
+    this.popMatrix()
+
+    this.pushMatrix()
+
+    this.translate(0, 0.5, 0)
+
+    this.unitCube.display()
     //this.unitCubeQuad.display()
+
+    this.popMatrix()
 
 
     // ---- END Primitive drawing section
