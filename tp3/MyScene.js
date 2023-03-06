@@ -42,7 +42,7 @@ export class MyScene extends CGFscene {
 
         //Other variables connected to MyInterface
         this.selectedObject = 3;
-        this.selectedMaterial = 1;
+        this.selectedMaterial = 2;
         this.displayAxis = true;
         this.displayNormals = true;
         this.objectComplexity = 0.5;
@@ -59,7 +59,7 @@ export class MyScene extends CGFscene {
         this.lights[0].setVisible(true);
         this.lights[0].update();
         
-        this.lights[1].setPosition(0.0, 0.0, 4.0, 1.0);
+        this.lights[1].setPosition(0.0, 0.0, 1.4, 1.0);
         this.lights[1].setDiffuse(1.0, 1.0, 1.0, 1.0);
         this.lights[1].setSpecular(1.0, 1.0, 0.0, 1.0);
         this.lights[1].disable();
