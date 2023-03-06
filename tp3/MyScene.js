@@ -41,7 +41,7 @@ export class MyScene extends CGFscene {
         this.objectIDs = { 'Plane': 0 , 'Pyramid': 1, 'Cone': 2, 'Tangram': 3, 'Unit Cube': 4};
 
         //Other variables connected to MyInterface
-        this.selectedObject = 4;
+        this.selectedObject = 3;
         this.selectedMaterial = 4;
         this.displayAxis = true;
         this.displayNormals = true;
@@ -135,10 +135,10 @@ export class MyScene extends CGFscene {
 
         // My Material
         this.myMaterial = new CGFappearance(this);
-        this.myMaterial.setAmbient(0.2, 0.2, 0.2, 1.0);
+        this.myMaterial.setAmbient(0.0, 0.0, 0.0, 1.0);
         this.myMaterial.setDiffuse(0, 0, 0, 1.0);
         this.myMaterial.setSpecular(0.59, 0.44, 0.2, 1.0);
-        this.myMaterial.setShininess(10.0);
+        this.myMaterial.setShininess(5.0);
 
         // Custom material (can be changed in the interface)
         // initially midrange values on ambient, diffuse and specular, on R, G and B respectively
