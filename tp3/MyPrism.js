@@ -17,7 +17,7 @@ export class MyPrism extends CGFobject {
 
 	initBuffers() {
         this.vertices = [];
-        this.indices = [];
+        this.indices = []; 
         this.normals = [];
 
         var ang = 0;
@@ -33,6 +33,9 @@ export class MyPrism extends CGFobject {
                 var ca=Math.cos(ang);
                 var caa=Math.cos(ang+alphaAng);
 
+                var cn = Math.cos(ang+alphaAng/2);
+                var sn = Math.sin(ang+alphaAng/2);
+
                 //1o triangulo (face lateral)
                 this.vertices.push(ca, sa, h - 1/this.stacks);
                 this.vertices.push(ca, sa, h);
@@ -42,6 +45,12 @@ export class MyPrism extends CGFobject {
                 //this.vertices.push(caa, saa, 0); <- so p lembrar
                 this.vertices.push(caa, saa, h);
                 //this.vertices.push(ca, sa, 1 );  <- so p lembrar
+
+                //normal
+                this.normals.push(cn, sn, 0);
+                this.normals.push(cn, sn, 0);
+                this.normals.push(cn, sn, 0);
+                this.normals.push(cn, sn, 0);
 
                 this.indices.push((4*(this.stacks*i+j)+2), (4*(this.stacks*i+j)+1) , (4*(this.stacks*i+j)));
                 this.indices.push((4*(this.stacks*i+j)+2), (4*(this.stacks*i+j)+3) , (4*(this.stacks*i+j)+1));
