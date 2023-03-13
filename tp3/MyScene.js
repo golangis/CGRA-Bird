@@ -33,7 +33,7 @@ export class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.plane = new MyPlane(this, 5);
         this.cone = new MyCone(this, 3, 1);
-        this.prism = new MyPrism(this, 3, 3);
+        this.prism = new MyPrism(this, 8, 20);
         this.cylinder = new MyCylinder(this, 8, 20);
         this.pyramid = new MyPyramid(this, 3, 1);
         this.tangram = new MyTangram(this);
