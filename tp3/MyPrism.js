@@ -45,10 +45,9 @@ export class MyPrism extends CGFobject {
 
                 this.indices.push((4*(this.stacks*i+j)+2), (4*(this.stacks*i+j)+1) , (4*(this.stacks*i+j)));
                 this.indices.push((4*(this.stacks*i+j)+2), (4*(this.stacks*i+j)+3) , (4*(this.stacks*i+j)+1));
-
-                ang+=alphaAng;
+            } 
+            ang+=alphaAng;
         }
-    }
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
     }
