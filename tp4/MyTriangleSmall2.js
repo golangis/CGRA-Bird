@@ -4,7 +4,7 @@ import {CGFobject} from '../lib/CGF.js';
  * @constructor
  * @param scene - Reference to MyScene object
  */
-export class MyTriangle extends CGFobject {
+export class MyTriangleSmall2 extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
@@ -12,23 +12,23 @@ export class MyTriangle extends CGFobject {
 	
 	initBuffers() {
 		this.vertices = [
-			-1, 1, 0,	//0
-			-1, -1, 0,	//1
-			1, -1, 0,	//2
-			-1, 1, 0,	//3
-			-1, -1, 0,	//4
-			1, -1, 0,	//5
+			-1, 0, 0,	//0
+			0, 1, 0,	//1
+			1, 0, 0,	//2
+			-1, 0, 0,	//3
+			0, 1, 0,	//4
+			1, 0, 0,	//5
 		];
 
 		this.texCoords=[
-			0, 0.5, 	//0
-			0, 1,		//1
-			0.5, 1,		//2
-			0, 0.5, 	//3
-			0, 1,		//4
-			0.5, 1,		//5
+			0, 0, 	//0
+			0.25, 0.25,		//1
+			0, 0.5,		//2
+			0, 0, 	//3
+			0.25, 0.25,		//4
+			0, 0.5,		//5
 		]
-		
+
 		this.normals = [
 			0, 0, 1,
 			0, 0, 1,
@@ -40,8 +40,8 @@ export class MyTriangle extends CGFobject {
 
 		//Counter-clockwise reference of vertices
 		this.indices = [
-			0, 1, 2,
-			5, 4, 3
+			0, 2, 1,
+			4, 5, 3,
 		];
 
 		//The defined indices (and corresponding vertices)

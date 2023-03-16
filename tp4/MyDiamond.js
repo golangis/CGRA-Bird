@@ -21,6 +21,17 @@ export class MyDiamond extends CGFobject {
 			0, 1, 0,	//6
 			1, 0, 0		//7
 		];
+		
+		this.texCoords=[
+			0, 0.5,
+			0.25, 0.75,
+			0.25, 0.25,
+			0.5, 0.5,
+			0, 0.5,
+			0.25, 0.75,
+			0.25, 0.25,
+			0.5, 0.5,
+		]
 
 		this.normals = [
 			0, 0, 1,
@@ -40,6 +51,7 @@ export class MyDiamond extends CGFobject {
 			6, 7, 5,
 			6, 5, 4
 		];
+		
 
 		//The defined indices (and corresponding vertices)
 		//will be read in groups of three to draw triangles

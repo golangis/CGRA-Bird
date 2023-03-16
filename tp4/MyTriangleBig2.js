@@ -4,7 +4,7 @@ import {CGFobject} from '../lib/CGF.js';
  * @constructor
  * @param scene - Reference to MyScene object
  */
-export class MyTriangleBig extends CGFobject {
+export class MyTriangleBig2 extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
@@ -19,6 +19,15 @@ export class MyTriangleBig extends CGFobject {
 			0, 2, 0,	//4
 			2, 0, 0,	//5
 		];
+
+		this.texCoords=[
+			1, 0, 	//0
+			0.5, 0.5,		//1
+			1, 1,		//2
+			1, 0, 	//3
+			0.5, 0.5,		//4
+			1, 1,		//5
+		]
 
 		this.normals = [
 			0, 0, 1,
