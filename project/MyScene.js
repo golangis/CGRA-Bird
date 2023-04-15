@@ -94,6 +94,27 @@ export class MyScene extends CGFscene {
     // Draw axis
     if (this.displayAxis) this.axis.display();
 
+    var sca = [
+      this.scaleFactor,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      this.scaleFactor,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      this.scaleFactor,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+    ];
+
+    this.multMatrix(sca);
+
     // ---- BEGIN Primitive drawing section
 
     this.pushMatrix();

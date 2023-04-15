@@ -76,6 +76,8 @@ export class MySphere extends CGFobject {
                 this.vertices.push(this.radius * Math.cos(stack*height_angle))
                 this.vertices.push(this.radius * Math.sin(stack*height_angle) * Math.sin(index*width_angle))
 
+                console.log(this.scaleFactor)
+
                 this.normals.push(
                     Math.cos(index*width_angle) * (this.insideOut? -1 : 1) ,
                     Math.cos(stack*height_angle) * (this.insideOut? -1 : 1),
