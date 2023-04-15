@@ -23,6 +23,11 @@ export class MyInterface extends CGFinterface {
         //Slider element in GUI
         this.gui.add(this.scene, 'scaleFactor', 0.1, 5).name('Scale Factor');
 
+        var f0 = this.gui.addFolder('Sphere')
+        f0.add(this.scene, 'sphereSlices', 3, 50).name('Slices').onChange(this.scene.updateSphere.bind(this.scene));
+        f0.add(this.scene, 'sphereStacks', 3, 50).name('Stacks').onChange(this.scene.updateSphere.bind(this.scene));
+        f0.add(this.scene, 'sphereRadius', 0.1, 50).name('Radius').onChange(this.scene.updateSphere.bind(this.scene));
+
         return true;
     }
 }

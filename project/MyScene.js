@@ -1,5 +1,6 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFshader, CGFtexture } from "../lib/CGF.js";
 import { MyPlane } from "./MyPlane.js";
+import { MySphere } from "./MySphere.js";
 
 /**
  * MyScene
@@ -27,16 +28,26 @@ export class MyScene extends CGFscene {
     this.axis = new CGFaxis(this);
     this.plane = new MyPlane(this,30);
 
+    this.sphereSlices = 40
+    this.sphereStacks = 40
+    this.sphereRadius = 20
+    this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius)
+
     //Objects connected to MyInterface
     this.displayAxis = true;
     this.scaleFactor = 1;
 
     this.enableTextures(true);
 
-this.texture = new CGFtexture(this, "images/terrain.jpg");
-this.appearance = new CGFappearance(this);
-this.appearance.setTexture(this.texture);
-this.appearance.setTextureWrap('REPEAT', 'REPEAT');
+    this.texture = new CGFtexture(this, "images/terrain.jpg");
+    this.appearance = new CGFappearance(this);
+    this.appearance.setTexture(this.texture);
+    this.appearance.setTextureWrap('REPEAT', 'REPEAT');
+
+    this.sphereTexture = new CGFtexture(this, "images/earth.jpg");
+    this.sphereAppearance = new CGFappearance(this);
+    this.sphereAppearance.setTexture(this.sphereTexture);
+    this.sphereAppearance.setTextureWrap('REPEAT', 'REPEAT');
 
   }
   initLights() {
@@ -60,6 +71,14 @@ this.appearance.setTextureWrap('REPEAT', 'REPEAT');
     this.setSpecular(0.2, 0.4, 0.8, 1.0);
     this.setShininess(10.0);
   }
+
+  updateSphere() {
+    console.log(this.sphereSlices)
+    console.log(this.sphereStacks)
+    console.log(this.sphereRadius)
+    this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius)
+  }
+
   display() {
     // ---- BEGIN Background, camera and axis setup
     // Clear image and depth buffer everytime we update the scene
@@ -83,6 +102,10 @@ this.appearance.setTextureWrap('REPEAT', 'REPEAT');
     this.rotate(-Math.PI/2.0,1,0,0);
     this.plane.display();
     this.popMatrix();
+
+    this.sphereAppearance.apply();
+    // this.sphere.enableNormalViz()
+    this.sphere.display();
 
     // ---- END Primitive drawing section
   }
