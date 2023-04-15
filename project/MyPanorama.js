@@ -1,17 +1,16 @@
 import {CGFobject} from '../lib/CGF.js';
 /**
- * MySphere
+ * MyPanorama
  * @constructor
  * @param scene - Reference to MyScene object
  */
-export class MySphere extends CGFobject {
-	constructor(scene, slices, stacks, radius, insideOut) {
+export class MyPanorama extends CGFobject {
+	constructor(scene, slices, stacks, radius) {
 		super(scene);
 
         this.slices = slices
         this.stacks = stacks
         this.radius = radius
-        this.insideOut = insideOut
 		this.initBuffers();
 	}
 	
@@ -44,9 +43,9 @@ export class MySphere extends CGFobject {
             this.vertices.push(this.radius * Math.sin(height_angle) * Math.sin(index*width_angle))
             
             this.normals.push(
-                Math.cos(index*width_angle) * (this.insideOut? -1 : 1),
-                Math.cos(height_angle) * (this.insideOut? -1 : 1),
-                Math.sin(index*width_angle) * (this.insideOut? -1 : 1)
+                Math.cos(index*width_angle),
+                Math.cos(height_angle),
+                Math.sin(index*width_angle)
             )
             
             if (index == this.slices) {
@@ -54,14 +53,8 @@ export class MySphere extends CGFobject {
                 this.texCoords.push(0)
                 continue
             }
-
-            if (this.insideOut) {
-                this.indices.push(0)
-                this.indices.push(index+2)
-            } else {
-                this.indices.push(index+2)
-                this.indices.push(0)
-            }
+            this.indices.push(index+2)
+            this.indices.push(0)
             this.indices.push(index+3)
 
             this.texCoords.push(1-index/this.slices)
@@ -77,9 +70,9 @@ export class MySphere extends CGFobject {
                 this.vertices.push(this.radius * Math.sin(stack*height_angle) * Math.sin(index*width_angle))
 
                 this.normals.push(
-                    Math.cos(index*width_angle) * (this.insideOut? -1 : 1) ,
-                    Math.cos(stack*height_angle) * (this.insideOut? -1 : 1),
-                    Math.sin(index*width_angle) * (this.insideOut? -1 : 1)
+                    Math.cos(index*width_angle),
+                    Math.cos(stack*height_angle),
+                    Math.sin(index*width_angle)
                 )
 
                 if (index == this.slices) {
@@ -92,22 +85,12 @@ export class MySphere extends CGFobject {
                     }
                     continue
                 }
-                if (this.insideOut) {
-                    this.indices.push((cur+index)+this.slices+2)
-                    this.indices.push((cur+index))
-                } else {
-                    this.indices.push((cur+index))
-                    this.indices.push((cur+index)+this.slices+2)
-                }
+                this.indices.push((cur+index))
+                this.indices.push((cur+index)+this.slices+2)
                 this.indices.push((cur+index)+this.slices+1)
 
-                if (this.insideOut) {
-                    this.indices.push((cur+index)+1)
-                    this.indices.push((cur+index))
-                } else {
-                    this.indices.push((cur+index))
-                    this.indices.push((cur+index)+1)
-                }
+                this.indices.push((cur+index))
+                this.indices.push((cur+index)+1)
                 this.indices.push((cur+index)+this.slices+2)
 
                 if (stack == this.stacks-1) {
@@ -128,16 +111,15 @@ export class MySphere extends CGFobject {
             if (index == this.slices) {
                 continue
             }
-            if (this.insideOut) {
-                this.indices.push(lastFirstPoint+index+1)
-                this.indices.push(lastFirstPoint+index)
-            } else {
-                this.indices.push(lastFirstPoint+index)
-                this.indices.push(lastFirstPoint+index+1)
-            }
+            this.indices.push(lastFirstPoint+index)
+            this.indices.push(lastFirstPoint+index+1)
             this.indices.push(1)
         }
 
+        console.log("vertices", this.vertices)
+        console.log("indices", this.indices)
+        console.log("normals", this.normals)
+        console.log("texCoords", this.texCoords)
 
 		//The defined indices (and corresponding vertices)
 		//will be read in groups of three to draw triangles

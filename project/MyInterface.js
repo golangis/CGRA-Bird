@@ -27,6 +27,7 @@ export class MyInterface extends CGFinterface {
         f0.add(this.scene, 'sphereSlices', 3, 50).name('Slices').onChange(this.scene.updateSphere.bind(this.scene));
         f0.add(this.scene, 'sphereStacks', 3, 50).name('Stacks').onChange(this.scene.updateSphere.bind(this.scene));
         f0.add(this.scene, 'sphereRadius', 0.1, 50).name('Radius').onChange(this.scene.updateSphere.bind(this.scene));
+        f0.add(this.scene, 'sphereInside').name('InsideOut').onChange(this.scene.updateSphere.bind(this.scene));
 
         return true;
     }
