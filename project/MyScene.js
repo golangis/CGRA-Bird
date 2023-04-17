@@ -31,7 +31,7 @@ export class MyScene extends CGFscene {
     this.sphereSlices = 40
     this.sphereStacks = 40
     this.sphereRadius = 20
-    this.sphereInside = true
+    this.sphereInside = false
     this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
 
     //Objects connected to MyInterface
@@ -74,9 +74,6 @@ export class MyScene extends CGFscene {
   }
 
   updateSphere() {
-    console.log(this.sphereSlices)
-    console.log(this.sphereStacks)
-    console.log(this.sphereRadius)
     this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
   }
 
