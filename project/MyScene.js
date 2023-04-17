@@ -2,6 +2,7 @@ import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFshader, CGFtexture } fr
 import { MyPanorama } from "./MyPanorama.js";
 import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
+import { MyTerrain } from "./MyTerrain.js";
 
 /**
  * MyScene
@@ -27,7 +28,9 @@ export class MyScene extends CGFscene {
 
     //Initialize scene objects
     this.axis = new CGFaxis(this);
-    this.plane = new MyPlane(this,30);
+
+    this.terrainDivisions = 30
+    this.terrain = new MyTerrain(this, this.terrainDivisions);
 
     this.sphereSlices = 40
     this.sphereStacks = 40
@@ -87,6 +90,10 @@ export class MyScene extends CGFscene {
     this.panorama = new MyPanorama(this, this.panoramaTexture, this.panoramaSlices, this.panoramaStacks, 200)
   }
 
+  updateTerrain() {
+    this.terrain = new MyTerrain(this, this.terrainDivisions);
+  }
+
   display() {
     // ---- BEGIN Background, camera and axis setup
     // Clear image and depth buffer everytime we update the scene
@@ -129,7 +136,7 @@ export class MyScene extends CGFscene {
     this.translate(0,-100,0);
     this.scale(400,400,400);
     this.rotate(-Math.PI/2.0,1,0,0);
-    this.plane.display();
+    this.terrain.display();
     this.popMatrix();
 
     this.sphereAppearance.apply();
