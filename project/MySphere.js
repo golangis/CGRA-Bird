@@ -22,8 +22,8 @@ export class MySphere extends CGFobject {
         ]
 
         this.normals = [
-            0, 1, 0,
-            0, -1, 0,
+            0, (this.insideOut? -1 : 1), 0,
+            0, (this.insideOut? 1 : -1), 0,
         ]
 
         //Counter-clockwise reference of vertices
