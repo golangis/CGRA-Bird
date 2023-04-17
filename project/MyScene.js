@@ -36,8 +36,8 @@ export class MyScene extends CGFscene {
     this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
 
     this.panoramaTexture = "images/panorama4.jpg"
-    this.panoramaSlices = 40
-    this.panoramaStacks = 40
+    this.panoramaSlices = 80
+    this.panoramaStacks = 80
     this.panorama = new MyPanorama(this, this.panoramaTexture, this.panoramaSlices, this.panoramaStacks, 200)
 
     //Objects connected to MyInterface
@@ -136,8 +136,14 @@ export class MyScene extends CGFscene {
     // this.sphere.enableNormalViz()
     this.sphere.display();
 
+    this.pushMatrix();
+    this.translate(
+      this.camera.position[0],
+      this.camera.position[1],
+      this.camera.position[2]
+      );
     this.panorama.display();
-
+    this.popMatrix();
     // ---- END Primitive drawing section
   }
 }
