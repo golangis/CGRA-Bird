@@ -28,6 +28,9 @@ export class MyInterface extends CGFinterface {
         f0.add(this.scene, 'sphereStacks', 3, 150).name('Stacks').onChange(this.scene.updateSphere.bind(this.scene));
         f0.add(this.scene, 'sphereRadius', 0.1, 300).name('Radius').onChange(this.scene.updateSphere.bind(this.scene));
         f0.add(this.scene, 'sphereInside').name('InsideOut').onChange(this.scene.updateSphere.bind(this.scene));
+        var f1 = this.gui.addFolder('Panorama')
+        f1.add(this.scene, 'panoramaSlices', 3, 150).name('Slices').onChange(this.scene.updatePanorama.bind(this.scene));
+        f1.add(this.scene, 'panoramaStacks', 3, 150).name('Stacks').onChange(this.scene.updatePanorama.bind(this.scene));
 
         return true;
     }

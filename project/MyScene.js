@@ -1,4 +1,5 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFshader, CGFtexture } from "../lib/CGF.js";
+import { MyPanorama } from "./MyPanorama.js";
 import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 
@@ -30,9 +31,14 @@ export class MyScene extends CGFscene {
 
     this.sphereSlices = 40
     this.sphereStacks = 40
-    this.sphereRadius = 20
+    this.sphereRadius = 2
     this.sphereInside = false
     this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
+
+    this.panoramaTexture = "images/panorama4.jpg"
+    this.panoramaSlices = 40
+    this.panoramaStacks = 40
+    this.panorama = new MyPanorama(this, this.panoramaTexture, this.panoramaSlices, this.panoramaStacks, 200)
 
     //Objects connected to MyInterface
     this.displayAxis = true;
@@ -75,6 +81,10 @@ export class MyScene extends CGFscene {
 
   updateSphere() {
     this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
+  }
+
+  updatePanorama() {
+    this.panorama = new MyPanorama(this, this.panoramaTexture, this.panoramaSlices, this.panoramaStacks, 200)
   }
 
   display() {
@@ -125,6 +135,8 @@ export class MyScene extends CGFscene {
     this.sphereAppearance.apply();
     // this.sphere.enableNormalViz()
     this.sphere.display();
+
+    this.panorama.display();
 
     // ---- END Primitive drawing section
   }
