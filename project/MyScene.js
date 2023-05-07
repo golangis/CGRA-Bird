@@ -18,7 +18,7 @@ export class MyScene extends CGFscene {
     this.initCameras();
     this.initLights();
 
-    //Background color
+    //Background coltestShaders[this.selectedExampleShader]or
     this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
     this.gl.clearDepth(100.0);
@@ -31,6 +31,9 @@ export class MyScene extends CGFscene {
 
     this.terrainDivisions = 30
     this.terrain = new MyTerrain(this, this.terrainDivisions);
+    this.terrainShader = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
+    this.terrainMap = new CGFtexture(this, "images/heightmap.jpg");
+    this.terrainAltimetry = new CGFtexture(this, "images/altimetry.png");
 
     this.sphereSlices = 40
     this.sphereStacks = 40
@@ -59,6 +62,10 @@ export class MyScene extends CGFscene {
     this.sphereAppearance.setTexture(this.sphereTexture);
     this.sphereAppearance.setTextureWrap('REPEAT', 'REPEAT');
 
+    this.terrainShader.setUniformsValues({ uSampler2: 1 });
+    this.terrainShader.setUniformsValues({ uSampler3: 2 });
+
+    this.setUpdatePeriod(50);
   }
   initLights() {
     this.lights[0].setPosition(15, 0, 5, 1);
@@ -92,6 +99,10 @@ export class MyScene extends CGFscene {
 
   updateTerrain() {
     this.terrain = new MyTerrain(this, this.terrainDivisions);
+  }
+
+  update(t) {
+    this.terrainShader.setUniformsValues({ timeFactor: t/ 100 % 100 })
   }
 
   display() {
@@ -134,9 +145,13 @@ export class MyScene extends CGFscene {
     this.pushMatrix();
     this.appearance.apply();
     this.translate(0,-100,0);
-    this.scale(400,400,400);
+    this.scale(400, 400, 400);
     this.rotate(-Math.PI/2.0,1,0,0);
+    this.setActiveShader(this.terrainShader)
+    this.terrainMap.bind(1);
+    this.terrainAltimetry.bind(2);
     this.terrain.display();
+    this.setActiveShader(this.defaultShader)
     this.popMatrix();
 
     this.sphereAppearance.apply();
