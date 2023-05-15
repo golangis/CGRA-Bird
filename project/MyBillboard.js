@@ -33,16 +33,15 @@ export class MyBillboard extends CGFobject {
         // Quad
         this.scene.pushMatrix()
         
-        // this.scene.translate(this.x, this.y, this.z)
+        this.scene.translate(this.x, this.y, this.z)
+
         this.scene.scale(1, 1, 1)
 
         this.shader.setUniformsValues(
             { 
                 cameraPosition: [this.scene.camera.position[0], this.scene.camera.position[1], this.scene.camera.position[2]],
-                selfPosition: [0, 0, 0]
+                selfPosition: [this.x, this.y, this.z]
             })
-
-        this.quad.enableNormalViz()
 
         this.appearance.apply();
         this.scene.setActiveShader(this.shader)

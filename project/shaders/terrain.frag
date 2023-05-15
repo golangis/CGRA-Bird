@@ -11,9 +11,6 @@ uniform sampler2D uSampler3;
 uniform float timeFactor;
 
 void main() {
-	// vec4 color = texture2D(uSampler, vTextureCoord);
-
-	// vec4 color2 = texture2D(uSampler3, vec2(0, 1.0- texture2D(uSampler2, vTextureCoord).b));
 
 	vec4 color = 0.7 * texture2D(uSampler, vTextureCoord) + 0.3 * texture2D(uSampler3, vec2(0, 1.0- texture2D(uSampler2, vTextureCoord).b));
 	

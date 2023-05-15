@@ -4,6 +4,7 @@ import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 import { MyTerrain } from "./MyTerrain.js";
 import { MyBillboard } from "./MyBillboard.js";
+import { MyTreeGroupPatch } from "./MyTreeGroupPatch.js";
 
 /**
  * MyScene
@@ -37,6 +38,8 @@ export class MyScene extends CGFscene {
     this.terrainShader = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
     this.terrainMap = new CGFtexture(this, "images/heightmap.jpg");
     this.terrainAltimetry = new CGFtexture(this, "images/altimetry.png");
+    
+    this.treeGroupPatch = new MyTreeGroupPatch(this, 0, 0, 0);
 
     this.sphereSlices = 40
     this.sphereStacks = 40
@@ -156,13 +159,11 @@ export class MyScene extends CGFscene {
     this.terrain.display();
     this.setActiveShader(this.defaultShader)
     this.popMatrix();
-    
-    this.pushMatrix();
-    this.scale(10, 10, 10)
-    this.testBillboard.display();
-    this.setActiveShader(this.defaultShader)
-    this.popMatrix();
-    
+
+    this.pushMatrix()
+    this.treeGroupPatch.display();
+    this.popMatrix()
+
     this.sphereAppearance.apply();
     // this.sphere.enableNormalViz()
     // this.sphere.display();
