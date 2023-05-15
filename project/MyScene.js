@@ -3,6 +3,7 @@ import { MyPanorama } from "./MyPanorama.js";
 import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 import { MyTerrain } from "./MyTerrain.js";
+import { MyBillboard } from "./MyBillboard.js";
 
 /**
  * MyScene
@@ -28,6 +29,8 @@ export class MyScene extends CGFscene {
 
     //Initialize scene objects
     this.axis = new CGFaxis(this);
+
+    this.testBillboard = new MyBillboard(this, 4, 0, 0);
 
     this.terrainDivisions = 30
     this.terrain = new MyTerrain(this, this.terrainDivisions);
@@ -153,10 +156,16 @@ export class MyScene extends CGFscene {
     this.terrain.display();
     this.setActiveShader(this.defaultShader)
     this.popMatrix();
-
+    
+    this.pushMatrix();
+    this.scale(10, 10, 10)
+    this.testBillboard.display();
+    this.setActiveShader(this.defaultShader)
+    this.popMatrix();
+    
     this.sphereAppearance.apply();
     // this.sphere.enableNormalViz()
-    this.sphere.display();
+    // this.sphere.display();
 
     this.pushMatrix();
     this.translate(
