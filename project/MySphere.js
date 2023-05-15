@@ -5,13 +5,15 @@ import {CGFobject} from '../lib/CGF.js';
  * @param scene - Reference to MyScene object
  */
 export class MySphere extends CGFobject {
-	constructor(scene, slices, stacks, radius, insideOut) {
+	constructor(scene, slices, stacks, radius, insideOut, totalAngle = 2 * Math.PI) {
 		super(scene);
 
         this.slices = slices
         this.stacks = stacks
         this.radius = radius
         this.insideOut = insideOut
+        this.totalAngle = totalAngle
+
 		this.initBuffers();
 	}
 	
@@ -34,7 +36,7 @@ export class MySphere extends CGFobject {
             0.5, 1,
         ];
 
-        let width_angle = 2 * Math.PI / this.slices;
+        let width_angle = this.totalAngle / this.slices;
         let height_angle = Math.PI / this.stacks;
 
         // top hat

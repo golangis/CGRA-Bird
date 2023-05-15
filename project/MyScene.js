@@ -3,6 +3,8 @@ import { MyPanorama } from "./MyPanorama.js";
 import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 import { MyTerrain } from "./MyTerrain.js";
+import { MyBird } from "./MyBird/MyBird.js";
+import { MyBirdEgg } from "./MyBird/MyBirdEgg.js";
 
 /**
  * MyScene
@@ -65,6 +67,12 @@ export class MyScene extends CGFscene {
     this.terrainShader.setUniformsValues({ uSampler2: 1 });
     this.terrainShader.setUniformsValues({ uSampler3: 2 });
 
+    // Bird Egg
+    this.eggTexture = new CGFtexture(this, "images/egg/egg3.jpg");
+    this.eggAppearance = new CGFappearance(this);
+    this.eggAppearance.setTexture(this.eggTexture);
+    this.birdEgg = new MyBirdEgg(this, this.eggAppearance);
+
     this.setUpdatePeriod(50);
   }
   initLights() {
@@ -91,6 +99,10 @@ export class MyScene extends CGFscene {
 
   updateSphere() {
     this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
+  }
+
+  updateMyBirdEgg() {
+    this.birdEgg = new MyBirdEgg(this, this.eggAppearence);
   }
 
   updatePanorama() {
@@ -156,8 +168,8 @@ export class MyScene extends CGFscene {
 
     this.sphereAppearance.apply();
     // this.sphere.enableNormalViz()
-    this.sphere.display();
-
+    //this.sphere.display();
+    this.birdEgg.display();
     this.pushMatrix();
     this.translate(
       this.camera.position[0],
