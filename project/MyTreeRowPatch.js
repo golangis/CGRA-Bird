@@ -2,20 +2,18 @@ import { CGFobject } from '../lib/CGF.js';
 import { MyBillboard } from "./MyBillboard.js";
 
 /**
- * MyTreeGroupPatch
+ * MyTreeRowPatch
  * @constructor
  * @param scene - Reference to MyScene object
  */
-export class MyTreeGroupPatch extends CGFobject {
+export class MyTreeRowPatch extends CGFobject {
 	constructor(scene, x, z) {
 		super(scene);
         
         this.trees = []
 
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                this.trees.push(new MyBillboard(scene, i*2 + (Math.floor(Math.random() * 4) / 4 - 0.5), 0, j*2 + (Math.floor(Math.random() * 4) / 4 - 0.5)))
-            }
+        for (let i = 0; i < 6; i++) {
+            this.trees.push(new MyBillboard(scene, i*2 + (Math.floor(Math.random() * 4) / 4 - 0.5), 0, (Math.floor(Math.random() * 4) / 4 - 0.5)))
         }
 
         this.x = x;
