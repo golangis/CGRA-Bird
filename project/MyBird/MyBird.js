@@ -4,6 +4,8 @@ import { BirdBody } from './BirdParts/BirdBody.js'
 import { BirdBeak } from './BirdParts/BirdBeak.js'
 import { BirdEye }  from './BirdParts/BirdEye.js'
 import { BirdLeg } from './BirdParts/BirdLeg.js'
+import { BirdHat } from './BirdParts/BirdHat.js'
+import { BirdTail } from './BirdParts/BirdTail.js'
 
 export class MyBird extends CGFobject {
   constructor(scene, movingVelocity, rotationRight, rotationLeft) {
@@ -15,6 +17,8 @@ export class MyBird extends CGFobject {
     // this.setWings()
     this.setBeak()
     this.setLegs()
+    this.setHat()
+    this.setTail()
   }
 
   setBody() {
@@ -57,6 +61,23 @@ export class MyBird extends CGFobject {
     this.leg = new BirdLeg(this.scene, this.legAppearance)  
   }
 
+  setHat() { 
+    this.hatAppearance = new CGFappearance(this.scene);
+    this.hatAppearance.setAmbient(0, 0, 0, 1);
+    this.hatAppearance.setSpecular(0, 0, 0, 0);
+    this.hatAppearance.setShininess(10)
+    this.hat = new BirdHat(this.scene, this.hatAppearance)  
+  }
+
+  setTail() { 
+    this.tailAppearance = new CGFappearance(this.scene);
+    this.tailAppearance.setAmbient(0, 0, 0, 1);
+    this.tailAppearance.setSpecular(0, 0, 0, 0);
+    this.tailAppearance.setShininess(10)
+    this.tail = new BirdTail(this.scene, this.tailAppearance)  
+  }
+
+
   display() {
     this.scene.pushMatrix()
     this.body.display()
@@ -64,6 +85,8 @@ export class MyBird extends CGFobject {
     this.beak.display()
     this.eye.display()
     this.leg.display()
+    this.hat.display()
+    this.tail.display()
     this.scene.popMatrix();
   }
 }
