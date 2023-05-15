@@ -6,6 +6,7 @@ import { MyTerrain } from "./MyTerrain.js";
 import { MyBird } from "./MyBird/MyBird.js";
 import { MyBirdEgg } from "./MyBird/MyBirdEgg.js";
 
+
 /**
  * MyScene
  * @constructor
@@ -67,6 +68,15 @@ export class MyScene extends CGFscene {
     this.terrainShader.setUniformsValues({ uSampler2: 1 });
     this.terrainShader.setUniformsValues({ uSampler3: 2 });
 
+    // Bird
+    this.bird = new MyBird(this);
+    this.birdAppearance = new CGFappearance(this);
+    this.birdAppearance.setAmbient(0.3, 0.3, 0.3, 1);
+    this.birdAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
+    this.birdAppearance.setSpecular(0.0, 0.0, 0.0, 1);
+    this.birdAppearance.setShininess(120);
+
+
     // Bird Egg
     this.eggTexture = new CGFtexture(this, "images/egg/egg3.jpg");
     this.eggAppearance = new CGFappearance(this);
@@ -99,6 +109,10 @@ export class MyScene extends CGFscene {
 
   updateSphere() {
     this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
+  }
+
+  updateMyBird() {
+    this.bird = new MyBird(this, this.birdAppearance);
   }
 
   updateMyBirdEgg() {
@@ -169,7 +183,8 @@ export class MyScene extends CGFscene {
     this.sphereAppearance.apply();
     // this.sphere.enableNormalViz()
     //this.sphere.display();
-    this.birdEgg.display();
+    this.bird.display();
+    //this.birdEgg.display();
     this.pushMatrix();
     this.translate(
       this.camera.position[0],

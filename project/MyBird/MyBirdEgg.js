@@ -1,4 +1,4 @@
-import { CGFobject} from '../../lib/CGF.js';
+import { CGFobject } from '../../lib/CGF.js';
 import { MySphere } from '../MySphere.js'
 
 export class MyBirdEgg extends CGFobject {
