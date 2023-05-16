@@ -5,7 +5,7 @@ import { MySphere } from "./MySphere.js";
 import { MyTerrain } from "./MyTerrain.js";
 import { MyBird } from "./MyBird/MyBird.js";
 import { MyBirdEgg } from "./MyBird/MyBirdEgg.js";
-
+import { MyNest } from "./MyBird/MyNest.js";
 
 /**
  * MyScene
@@ -83,6 +83,16 @@ export class MyScene extends CGFscene {
     this.eggAppearance.setTexture(this.eggTexture);
     this.birdEgg = new MyBirdEgg(this, this.eggAppearance);
 
+    // Nest
+    this.nestTexture = new CGFtexture(this, "images/nest/nest1.png");
+    this.nestAppearance = new CGFappearance(this);
+    this.nestAppearance.setAmbient(0.3, 0.3, 0.3, 1);
+    this.nestAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
+    this.nestAppearance.setSpecular(0.0, 0.0, 0.0, 1);
+    this.nestAppearance.setShininess(120);
+    this.nestAppearance.setTexture(this.nestTexture);
+    this.nest = new MyNest(this, this.nestAppearance);
+
     this.setUpdatePeriod(50);
   }
   initLights() {
@@ -114,9 +124,13 @@ export class MyScene extends CGFscene {
   updateMyBird() {
     this.bird = new MyBird(this, this.birdAppearance);
   }
-
+  
   updateMyBirdEgg() {
     this.birdEgg = new MyBirdEgg(this, this.eggAppearence);
+  }
+  
+  updateMyNest() {
+    this.nest = new MyNest(this, this.nestAppearance);
   }
 
   updatePanorama() {
@@ -183,7 +197,8 @@ export class MyScene extends CGFscene {
     this.sphereAppearance.apply();
     // this.sphere.enableNormalViz()
     //this.sphere.display();
-    this.bird.display();
+    //this.bird.display();
+    this.nest.display();
     //this.birdEgg.display();
     this.pushMatrix();
     this.translate(
