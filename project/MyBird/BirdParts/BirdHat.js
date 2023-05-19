@@ -6,7 +6,6 @@ export class BirdHat extends CGFobject {
   constructor(scene, appearence) {
     super(scene);
     this.hat = new MyCone(scene, 20, 20)
-    this.pompom = new MySphere(scene, 40, 40, 0.2, false)
     this.appearence = appearence  
         this.hatTexture = new CGFtexture(this.scene, './images/bird/hat.png')
         this.hatAppearance = new CGFappearance(this.scene);
@@ -23,11 +22,6 @@ export class BirdHat extends CGFobject {
         this.hatAppearance.apply() 
         this.hat.display()
         this.scene.popMatrix()
-
-        this.scene.pushMatrix()
-        this.appearence.apply()
-        this.scene.translate(1.3, 2.9, 0)
-        this.pompom.display()
     }
   
 }

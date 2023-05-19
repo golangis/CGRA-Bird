@@ -35,7 +35,7 @@ export class MyBird extends CGFobject {
   }
 
   setHead() {
-    this.headTexture = new CGFtexture(this.scene, './images/bird/body.png')
+    this.headTexture = new CGFtexture(this.scene, './images/bird/head.jpg')
     this.headAppearance = new CGFappearance(this.scene);
     this.headAppearance.setAmbient(0, 0, 0, 1);
     this.headAppearance.setSpecular(0, 0, 0, 0);
@@ -87,10 +87,10 @@ export class MyBird extends CGFobject {
   }
 
   setWings(){
-    this.wingsTexture = new CGFtexture(this.scene, './images/bird/wing.jpg')
-    this.wingsAppearance = new CGFappearance(this.scene);
-    this.wingsAppearance.setTexture(this.wingsTexture)
-    this.wings = new BirdWing(this.scene, this.wingsAppearance)  
+    this.wingTexture = new CGFtexture(this.scene, './images/bird/wing.jpg')
+    this.wingAppearence = new CGFappearance(this.scene);
+    this.wingAppearence.setTexture(this.wingTexture)
+    this.wings = new BirdWing(this.scene, this.wingAppearence)  
   }
 
 

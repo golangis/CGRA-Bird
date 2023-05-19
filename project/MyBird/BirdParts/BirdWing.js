@@ -11,7 +11,7 @@ export class BirdWing extends CGFobject {
     this.wingTrian2 = new MyTriangle(scene)
 
     this.appearence = appearence  
-      this.wingTexture = new CGFtexture(this.scene, './images/bird/wing.jpg')
+      this.wingTexture = new CGFtexture(this.scene, './images/bird/head.jpg')
       this.wingAppearence = new CGFappearance(this.scene);
       this.wingAppearence.setAmbient(0.1, 0.1, 0.1, 1);
       this.wingAppearence.setTexture(this.wingTexture)
@@ -21,6 +21,7 @@ export class BirdWing extends CGFobject {
     display() {
         // Right Wing Rectangle
         this.scene.pushMatrix()
+        this.scene.translate(1.3, 2.9, 0)
         this.scene.translate(-1.5, -2.3, -2)
         this.scene.rotate(Math.PI/2, 1, 0, 0)
         this.scene.rotate(Math.PI/8, 1, 0, 0)
@@ -31,6 +32,7 @@ export class BirdWing extends CGFobject {
 
         // Left Wing Rectangle
         this.scene.pushMatrix()
+        this.scene.translate(1.3, 2.9, 0)
         this.scene.translate(-1.5, -2.3, 2)
         this.scene.rotate(-Math.PI/2, 1, 0, 0)
         this.scene.rotate(-Math.PI/8, 1, 0, 0)
@@ -41,6 +43,7 @@ export class BirdWing extends CGFobject {
 
         // Right Wing Triangle
         this.scene.pushMatrix()
+        this.scene.translate(1.3, 2.9, 0)
         this.scene.translate(-1.5, -2, 3.65)
         this.scene.scale(0.75, 1.5, 1)
         this.scene.rotate(Math.PI/2, 1, 0, 0)
@@ -49,6 +52,7 @@ export class BirdWing extends CGFobject {
         this.scene.popMatrix()
 
         this.scene.pushMatrix()
+        this.scene.translate(1.3, 2.9, 0)
         this.scene.translate(-1.5, -2, 3.65)
         this.scene.scale(0.75, 1.5, 1)
         this.scene.rotate(Math.PI/2, 1, 0, 0)
@@ -63,6 +67,7 @@ export class BirdWing extends CGFobject {
 
         // Left Wing Triangle
         this.scene.pushMatrix()
+        this.scene.translate(1.3, 2.9, 0)
         this.scene.translate(-1.5, -2, -3.65)
         this.scene.scale(0.75, 1.5, 1)
         this.scene.rotate(-Math.PI/2, 1, 0, 0)
@@ -71,6 +76,7 @@ export class BirdWing extends CGFobject {
         this.scene.popMatrix()
 
         this.scene.pushMatrix()
+        this.scene.translate(1.3, 2.9, 0)
 +       this.scene.translate(-1.5, -2, -3.65)
         this.scene.scale(0.75, 1.5, 1)
         this.scene.rotate(-Math.PI/2, 1, 0, 0)
