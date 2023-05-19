@@ -24,7 +24,7 @@ export class MyBird extends CGFobject {
   }
 
   setBody() {
-    this.bodyTexture = new CGFtexture(this.scene, './images/bird/body.png')     
+    this.bodyTexture = new CGFtexture(this.scene, './images/textures/bird/body.png')     
     this.bodyAppearance = new CGFappearance(this.scene);
     this.bodyAppearance.setTexture(this.bodyTexture)
     this.bodyAppearance.setAmbient(0.5, 0.5, 0.5, 1.0);
@@ -33,7 +33,7 @@ export class MyBird extends CGFobject {
   }
 
   setHead() {
-    this.headTexture = new CGFtexture(this.scene, './images/bird/head.jpg')
+    this.headTexture = new CGFtexture(this.scene, './images/textures/bird/head.jpg')
     this.headAppearance = new CGFappearance(this.scene);
     this.headAppearance.setTexture(this.headTexture)
     this.headAppearance.setAmbient(0.5, 0.5, 0.5, 1.0);
@@ -41,7 +41,7 @@ export class MyBird extends CGFobject {
   }
 
   setBeak() { 
-    this.beakTexture = new CGFtexture(this.scene, './images/bird/beak.png')
+    this.beakTexture = new CGFtexture(this.scene, './images/textures/bird/beak.png')
     this.beakAppearance = new CGFappearance(this.scene);
     this.beakAppearance.setTexture(this.beakTexture)
     this.beakAppearance.setAmbient(0.5, 0.5, 0.5, 1.0);
@@ -49,7 +49,7 @@ export class MyBird extends CGFobject {
   }
 
   setEyes() {
-    this.eyeTexture = new CGFtexture(this.scene, './images/bird/eye.jpg')
+    this.eyeTexture = new CGFtexture(this.scene, './images/textures/bird/eye.jpg')
     this.eyeAppearance = new CGFappearance(this.scene); 
     this.eyeAppearance.setTexture(this.eyeTexture)
     this.eyeAppearance.setAmbient(0.5, 0.5, 0.5, 1.0);
@@ -57,7 +57,7 @@ export class MyBird extends CGFobject {
   }
 
   setLegs() { 
-    this.legTexture = new CGFtexture(this.scene, './images/bird/leg.png')
+    this.legTexture = new CGFtexture(this.scene, './images/textures/bird/leg.png')
     this.legAppearance = new CGFappearance(this.scene);
     this.legAppearance.setTexture(this.legTexture)
     this.legAppearance.setAmbient(0.3, 0.3, 0.3, 1.0);
@@ -77,7 +77,7 @@ export class MyBird extends CGFobject {
   }
 
   setWings(){
-    this.wingTexture = new CGFtexture(this.scene, './images/bird/wing.jpg')
+    this.wingTexture = new CGFtexture(this.scene, './images/textures/bird/wing.jpg')
     this.wingAppearence = new CGFappearance(this.scene);
     this.wingAppearence.setTexture(this.wingTexture)
     this.wingAppearence.setAmbient(0.5, 0.5, 0.5, 1.0);

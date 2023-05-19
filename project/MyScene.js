@@ -74,13 +74,13 @@ export class MyScene extends CGFscene {
 
 
     // Bird Egg
-    this.eggTexture = new CGFtexture(this, "images/egg/egg1.jpg");
+    this.eggTexture = new CGFtexture(this, "images/textures/egg/egg1.jpg");
     this.eggAppearance = new CGFappearance(this);
     this.eggAppearance.setTexture(this.eggTexture);
     this.birdEgg = new MyBirdEgg(this, this.eggAppearance);
 
     // Nest
-    this.nestTexture = new CGFtexture(this, "images/nest/nest1.jpeg");
+    this.nestTexture = new CGFtexture(this, "images/textures/nest/nest1.jpeg");
     this.nestAppearance = new CGFappearance(this);
     this.nestAppearance.setTexture(this.nestTexture);
     this.nest = new MyNest(this, this.nestAppearance);

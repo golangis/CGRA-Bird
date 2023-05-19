@@ -11,7 +11,7 @@ export class BirdWing extends CGFobject {
     this.wingTrian2 = new MyTriangle(scene)
 
     this.appearence = appearence  
-      this.wingTexture = new CGFtexture(this.scene, './images/bird/head.jpg')
+      this.wingTexture = new CGFtexture(this.scene, './images/textures/bird/head.jpg')
       this.wingAppearence = new CGFappearance(this.scene);
       this.wingAppearence.setTexture(this.wingTexture)
       this.wingAppearence.setTextureWrap('REPEAT', 'REPEAT');
