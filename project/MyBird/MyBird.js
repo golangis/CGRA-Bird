@@ -25,11 +25,8 @@ export class MyBird extends CGFobject {
 
   setBody() {
 
-    this.bodyTexture = new CGFtexture(this.scene, './images/bird/body.png')     
+    this.bodyTexture = new CGFtexture(this.scene, './images/bird/head.jpg')     
     this.bodyAppearance = new CGFappearance(this.scene);
-    this.bodyAppearance.setAmbient(0, 0, 0, 1);
-    this.bodyAppearance.setSpecular(0, 0, 0, 0);
-    this.bodyAppearance.setShininess(10)
     this.bodyAppearance.setTexture(this.bodyTexture)
     this.body = new BirdBody(this.scene, this.bodyAppearance)
   }
@@ -37,9 +34,6 @@ export class MyBird extends CGFobject {
   setHead() {
     this.headTexture = new CGFtexture(this.scene, './images/bird/head.jpg')
     this.headAppearance = new CGFappearance(this.scene);
-    this.headAppearance.setAmbient(0, 0, 0, 1);
-    this.headAppearance.setSpecular(0, 0, 0, 0);
-    this.headAppearance.setShininess(10)
     this.headAppearance.setTexture(this.headTexture)
     this.head = new BirdHead(this.scene, this.headAppearance)
   }
@@ -47,9 +41,6 @@ export class MyBird extends CGFobject {
   setBeak() { 
     this.beakTexture = new CGFtexture(this.scene, './images/bird/beak.png')
     this.beakAppearance = new CGFappearance(this.scene);
-    this.beakAppearance.setAmbient(0, 0, 0, 1);
-    this.beakAppearance.setSpecular(0, 0, 0, 0);
-    this.beakAppearance.setShininess(10)
     this.beakAppearance.setTexture(this.beakTexture)
     this.beak = new BirdBeak(this.scene, this.beakAppearance)
   }
@@ -69,20 +60,13 @@ export class MyBird extends CGFobject {
     this.leg = new BirdLeg(this.scene, this.legAppearance)  
   }
 
-  setHat() { 
-
+  setHat() {
     this.hatAppearance = new CGFappearance(this.scene);
-    this.hatAppearance.setAmbient(0, 0, 0, 1);
-    this.hatAppearance.setSpecular(0, 0, 0, 0);
-    this.hatAppearance.setShininess(10)
     this.hat = new BirdHat(this.scene, this.hatAppearance)  
   }
 
   setTail() { 
     this.tailAppearance = new CGFappearance(this.scene);
-    this.tailAppearance.setAmbient(0, 0, 0, 1);
-    this.tailAppearance.setSpecular(0, 0, 0, 0);
-    this.tailAppearance.setShininess(10)
     this.tail = new BirdTail(this.scene, this.tailAppearance)  
   }
 

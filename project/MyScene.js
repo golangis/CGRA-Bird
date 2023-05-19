@@ -98,6 +98,7 @@ export class MyScene extends CGFscene {
   initLights() {
     this.lights[0].setPosition(15, 0, 5, 1);
     this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
+    this.lights[0].setAmbient(1, 1, 1, 1);
     this.lights[0].enable();
     this.lights[0].update();
   }
@@ -148,6 +149,7 @@ export class MyScene extends CGFscene {
   display() {
     // ---- BEGIN Background, camera and axis setup
     // Clear image and depth buffer everytime we update the scene
+    this.lights[0].update() 
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
     this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
     // Initialize Model-View matrix as identity (no transformation
@@ -155,7 +157,7 @@ export class MyScene extends CGFscene {
     this.loadIdentity();
     // Apply transformations corresponding to the camera position relative to the origin
     this.applyViewMatrix();
-
+    this.appearance.setAmbient(1, 1, 1, 10);
     // Draw axis
     if (this.displayAxis) this.axis.display();
 
