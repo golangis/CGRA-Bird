@@ -12,12 +12,18 @@ export class BirdEye extends CGFobject {
       this.scene.pushMatrix()
       this.appearence.apply()
       this.scene.translate(2, 1.5, 0.5)
+      this.scene.rotate(Math.PI, 0, 1, 0)
+      this.scene.rotate(-Math.PI/6, 0, 1, 0)
+      this.scene.rotate(Math.PI/2, 1, 0, 0)
       this.eye.display()
       this.scene.popMatrix()
 
       this.scene.pushMatrix()
       this.appearence.apply()
       this.scene.translate(2, 1.5, -0.5)
+      this.scene.rotate(3*Math.PI/2, 1, 0, 0)
+      this.scene.rotate(Math.PI/6, 0, 0, 1)
+      this.scene.rotate(Math.PI, 0, 1, 0)
       this.eye.display()
       this.scene.popMatrix()
     }

@@ -4,15 +4,19 @@ import { MySphere } from '../MySphere.js'
 export class MyBirdEgg extends CGFobject {
   constructor(scene, appearence) {
     super(scene);
-    this.birdEgg = new MySphere(scene, 40, 40, 4, false)
+    this.birdEggDown = new MySphere(scene, 40, 40, 4, false, Math.PI)
+    this.birdEggUp = new MySphere(scene, 40, 40, 4, false, Math.PI)
     this.appearence = appearence  
     }
 
     display() {
       this.scene.pushMatrix()
       this.appearence.apply()
-      this.scene.scale(0.4, 0.6, 0.4)
-      this.birdEgg.display()
+      this.scene.rotate(Math.PI/2, 1, 0, 0)
+      this.birdEggDown.display()
+      this.scene.rotate(-Math.PI, 1, 0, 0)
+      this.scene.scale(1, 1, 1.8)
+      this.birdEggUp.display()
       this.scene.popMatrix()
     }
   

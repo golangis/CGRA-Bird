@@ -78,13 +78,13 @@ export class MyScene extends CGFscene {
 
 
     // Bird Egg
-    this.eggTexture = new CGFtexture(this, "images/egg/egg3.jpg");
+    this.eggTexture = new CGFtexture(this, "images/egg/egg1.jpg");
     this.eggAppearance = new CGFappearance(this);
     this.eggAppearance.setTexture(this.eggTexture);
     this.birdEgg = new MyBirdEgg(this, this.eggAppearance);
 
     // Nest
-    this.nestTexture = new CGFtexture(this, "images/nest/nest1.png");
+    this.nestTexture = new CGFtexture(this, "images/nest/nest1.jpeg");
     this.nestAppearance = new CGFappearance(this);
     this.nestAppearance.setAmbient(0.3, 0.3, 0.3, 1);
     this.nestAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
@@ -197,8 +197,8 @@ export class MyScene extends CGFscene {
     this.sphereAppearance.apply();
     // this.sphere.enableNormalViz()
     //this.sphere.display();
-    //this.bird.display();
-    this.nest.display();
+   this.bird.display();
+    //this.nest.display();
     //this.birdEgg.display();
     this.pushMatrix();
     this.translate(
