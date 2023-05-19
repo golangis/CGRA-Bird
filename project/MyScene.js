@@ -71,10 +71,6 @@ export class MyScene extends CGFscene {
     // Bird
     this.bird = new MyBird(this);
     this.birdAppearance = new CGFappearance(this);
-    this.birdAppearance.setAmbient(0.3, 0.3, 0.3, 1);
-    this.birdAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
-    this.birdAppearance.setSpecular(0.0, 0.0, 0.0, 1);
-    this.birdAppearance.setShininess(120);
 
 
     // Bird Egg
@@ -86,10 +82,6 @@ export class MyScene extends CGFscene {
     // Nest
     this.nestTexture = new CGFtexture(this, "images/nest/nest1.jpeg");
     this.nestAppearance = new CGFappearance(this);
-    this.nestAppearance.setAmbient(0.3, 0.3, 0.3, 1);
-    this.nestAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
-    this.nestAppearance.setSpecular(0.0, 0.0, 0.0, 1);
-    this.nestAppearance.setShininess(120);
     this.nestAppearance.setTexture(this.nestTexture);
     this.nest = new MyNest(this, this.nestAppearance);
 
@@ -97,8 +89,9 @@ export class MyScene extends CGFscene {
   }
   initLights() {
     this.lights[0].setPosition(15, 0, 5, 1);
-    this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
+    this.lights[0].setDiffuse(1, 1, 1, 1);
     this.lights[0].setAmbient(1, 1, 1, 1);
+    this.lights[0].setSpecular(1, 1, 1, 1);
     this.lights[0].enable();
     this.lights[0].update();
   }
@@ -112,10 +105,10 @@ export class MyScene extends CGFscene {
     );
   }
   setDefaultAppearance() {
-    this.setAmbient(0.2, 0.4, 0.8, 1.0);
-    this.setDiffuse(0.2, 0.4, 0.8, 1.0);
-    this.setSpecular(0.2, 0.4, 0.8, 1.0);
-    this.setShininess(10.0);
+    this.setAmbient(1, 1, 1, 1.0);
+    this.setDiffuse(1, 1, 1, 1.0);
+    this.setSpecular(1, 1, 1, 1.0);
+    this.setShininess(15.0);
   }
 
   updateSphere() {
@@ -157,7 +150,6 @@ export class MyScene extends CGFscene {
     this.loadIdentity();
     // Apply transformations corresponding to the camera position relative to the origin
     this.applyViewMatrix();
-    this.appearance.setAmbient(1, 1, 1, 10);
     // Draw axis
     if (this.displayAxis) this.axis.display();
 

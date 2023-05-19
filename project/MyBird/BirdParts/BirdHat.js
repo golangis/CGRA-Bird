@@ -9,7 +9,6 @@ export class BirdHat extends CGFobject {
     this.appearence = appearence  
         this.hatTexture = new CGFtexture(this.scene, './images/bird/hat.png')
         this.hatAppearance = new CGFappearance(this.scene);
-        this.hatAppearance.setAmbient(0.1, 0.1, 0.1, 1);
         this.hatAppearance.setTexture(this.hatTexture)
         this.hatAppearance.setTextureWrap('REPEAT', 'REPEAT');
     }
