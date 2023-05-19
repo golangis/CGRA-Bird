@@ -16,6 +16,7 @@ export class BirdBeak extends CGFobject {
       this.scene.rotate(-Math.PI/2, 1, 0, 0)
       this.scene.rotate(Math.PI / 5, 0, 1, 0)
       this.birdBeak.display()
+      this.appearence.setAmbient(0.25, 0.25, 0.25, 1.0);
       this.birdBeakBelow.display()
       this.scene.popMatrix()
     }
