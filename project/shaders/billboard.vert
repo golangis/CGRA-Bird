@@ -11,6 +11,8 @@ uniform vec3 selfPosition;
 
 varying vec2 vTextureCoord;
 
+uniform sampler2D uSampler2;
+
 void main() {
 	vec4 offset= vec4(0.0, 0.0, 0.0, 0.0);
 
@@ -30,5 +32,9 @@ void main() {
 
     offset = vec4(aVertexPosition, 1.0) * yRotation;
 
-	gl_Position = uPMatrix * uMVMatrix * offset;
+	vec2 positionOnTheHeightmap = vec2(selfPosition.x/400.0 + 0.5, selfPosition.z/400.0 + 0.5);
+
+	float height = 0.25 * texture2D(uSampler2, positionOnTheHeightmap).b;
+
+	gl_Position = uPMatrix * uMVMatrix * (offset + 400.0 * vec4(0.0, height, 0.0, 0.0));
 }
