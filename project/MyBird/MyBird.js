@@ -181,7 +181,7 @@ export class MyBird extends CGFobject {
     this.scene.popMatrix();
 
     this.scene.pushMatrix();
-    this.scene.scale(-1, 1, -1);
+    this.scene.scale(1, 1, -1);
     this.scene.translate(0, .4, -1.5);
     this.scene.rotate(-Math.PI/2.0 * this.wingAngleVariation /2,1,0,0);
     this.rightWing.display();
