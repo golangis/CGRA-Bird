@@ -1,6 +1,6 @@
 import { CGFobject, CGFappearance, CGFtexture } from "../../../../lib/CGF.js";
-import { MyTriangle } from "../../../tp1/MyTriangle.js";
-import { MyQuad } from "../../../tp2/MyQuad.js";
+import { MyTriangle } from "../../../project/MyTriangle.js";
+import { MyQuad } from "../../../project/MyQuad.js";
 
 export class BirdWing extends CGFobject {
   constructor(scene, appearence) {

@@ -1,5 +1,5 @@
 import { CGFobject, CGFappearance, CGFtexture } from '../../../lib/CGF.js';
-import { MyCone } from '../../../tp3/MyCone.js'
+import { MyCone } from '../../../project/MyCone.js'
 
 export class BirdTail extends CGFobject {
   constructor(scene, appearence) {

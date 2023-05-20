@@ -1,4 +1,4 @@
-import { CGFappearance, CGFobject, CGFshader, CGFtexture } from '../../lib/CGF.js'
+import { CGFappearance, CGFobject, CGFtexture } from '../../lib/CGF.js'
 import { BirdHead } from './BirdParts/BirdHead.js'
 import { BirdBody } from './BirdParts/BirdBody.js'
 import { BirdBeak } from './BirdParts/BirdBeak.js'

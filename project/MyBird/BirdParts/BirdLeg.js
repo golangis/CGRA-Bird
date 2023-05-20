@@ -1,6 +1,6 @@
 import { CGFobject } from '../../../../lib/CGF.js';
-import { MyCylinder } from '../../../tp3/MyCylinder.js'
-import { MyTriangle } from '../../../tp1/MyTriangle.js';
+import { MyCylinder } from '../../../project/MyCylinder.js'
+import { MyTriangle } from '../../../project/MyTriangle.js';
 
 export class BirdLeg extends CGFobject {
   constructor(scene, appearence) {
