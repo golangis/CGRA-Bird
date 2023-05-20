@@ -20,6 +20,10 @@ export class MyBird extends CGFobject {
     this.setLegs()
     this.setHat()
     this.setTail()
+    
+    this.xInitial = position[0];
+    this.yInitial = position[1];
+    this.zInitial = position[2];
 
     this.x = position[0];
     this.y = position[1];
@@ -29,14 +33,14 @@ export class MyBird extends CGFobject {
     this.scaleFactor = scaleFactor;
 
     this.oscillatoryY = 0;
-    this.velocity = 0;
     this.wingAngleVariation = 0;
-
+    
     this.accelerating = 0;
     this.turning = 0;
-
+    
     this._MAX_VELOCITY = 3;
-
+    
+    this.velocity = 0;
     this.rotation = 0;
   }
 
@@ -107,6 +111,21 @@ export class MyBird extends CGFobject {
   lerp(x, y, a) { return x * (1 - a) + y * a};
 
   clamp(a, min = 0, max = 1) { return Math.min(max, Math.max(min, a)); }
+
+  reset() {
+    this.x = this.xInitial;
+    this.y = this.yInitial;
+    this.z = this.zInitial;
+
+    this.oscillatoryY = 0;
+    this.wingAngleVariation = 0;
+    
+    this.accelerating = 0;
+    this.turning = 0;
+    
+    this.velocity = 0;
+    this.rotation = 0;
+  }
 
   turn(v) {
     this.turning = v;

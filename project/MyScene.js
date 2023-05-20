@@ -178,6 +178,8 @@ export class MyScene extends CGFscene {
       this.bird.turn(-1);
     if (this.gui.isKeyPressed("ArrowLeft"))
       this.bird.turn(1)
+    if (this.gui.isKeyPressed("KeyR"))
+      this.bird.reset()
   }
 
   display() {
