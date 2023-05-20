@@ -31,6 +31,13 @@ export class MyBird extends CGFobject {
     this.oscillatoryY = 0;
     this.velocity = 0;
     this.wingAngleVariation = 0;
+
+    this.accelerating = 0;
+    this.turning = 0;
+
+    this._MAX_VELOCITY = 3;
+
+    this.rotation = 0;
   }
 
   setBody() {
@@ -97,10 +104,33 @@ export class MyBird extends CGFobject {
     this.rightWing = new BirdWing(this.scene, this.wingTexture);
   }
 
-  update(timeSinceAppStart) {
+  lerp(x, y, a) { return x * (1 - a) + y * a};
+
+  clamp(a, min = 0, max = 1) { return Math.min(max, Math.max(min, a)); }
+
+  turn(v) {
+    this.turning = v;
+  }
+
+  accelerate(v) {
+    this.accelerating = v;
+  }
+
+  update(timeSinceAppStart, deltaTime) {
     this.oscillatoryY = Math.cos((timeSinceAppStart * this.speedFactor));
-    this.velocity = 0;
     this.wingAngleVariation = Math.cos((timeSinceAppStart * this.speedFactor * (1 + this.velocity)));
+
+    this.velocity += this.accelerating * deltaTime;
+
+    this.rotation += Math.PI/4.0 * this.turning * deltaTime;
+
+    this.velocity = this.clamp(this.velocity, 0, this._MAX_VELOCITY);
+
+    this.accelerating = 0;
+    this.turning = 0;
+
+    this.x += Math.cos(this.rotation) * this.velocity;
+    this.z += -Math.sin(this.rotation) * this.velocity;
   }
 
   updateFactors(speedFactor, scaleFactor) {
@@ -113,6 +143,8 @@ export class MyBird extends CGFobject {
     this.scene.pushMatrix()
     
     this.scene.translate(this.x, this.y + this.oscillatoryY, this.z);
+
+    this.scene.rotate(this.rotation, 0, 1, 0);
 
     this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
     

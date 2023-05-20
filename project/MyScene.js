@@ -93,6 +93,7 @@ export class MyScene extends CGFscene {
     this.setUpdatePeriod(50);
 
     this.appStartTime=Date.now(); 
+    this.lastTimeSinceAppStart = this.appStartTime;
   }
   initLights() {
     this.lights[0].setPosition(15, 0, 5, 1);
@@ -142,13 +143,41 @@ export class MyScene extends CGFscene {
     this.terrain = new MyTerrain(this, this.terrainDivisions);
   }
 
+  checkKeys() {
+    var text = "Keys pressed: ";
+    var keysPressed = false;
+
+    if (this.gui.isKeyPressed("ArrowUp")){
+      text += " W ";
+      keysPressed = true;
+    }
+    if (this.gui.isKeyPressed("ArrowDown")){
+      text += " S ";
+      keysPressed = true;
+    }
+    if (keysPressed) console.log(text)
+  }
+
   update(t) {
     this.terrainShader.setUniformsValues({ timeFactor: t/ 100 % 100 })
 
     let timeSinceAppStart = (t-this.appStartTime)/1000.0;
+    let deltaTime = timeSinceAppStart - this.lastTimeSinceAppStart;
+    this.lastTimeSinceAppStart = timeSinceAppStart;
 
     // let deltaTime =timeSinceAppStart- this.lastTimeSinceAppStart;
-    this.bird.update(timeSinceAppStart);
+    this.bird.update(timeSinceAppStart, deltaTime);
+
+    this.checkKeys();
+
+    if (this.gui.isKeyPressed("ArrowUp"))
+      this.bird.accelerate(1);
+    if (this.gui.isKeyPressed("ArrowDown"))
+      this.bird.accelerate(-1)
+    if (this.gui.isKeyPressed("ArrowRight"))
+      this.bird.turn(-1);
+    if (this.gui.isKeyPressed("ArrowLeft"))
+      this.bird.turn(1)
   }
 
   display() {
