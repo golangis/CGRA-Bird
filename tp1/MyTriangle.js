@@ -11,6 +11,8 @@ export class MyTriangle extends CGFobject {
 	}
 	
 	initBuffers() {
+		this.normals = [];
+        this.texCoords = []
 		this.vertices = [
 			-1, 1, 0,	//0
 			-1, -1, 0,	//1
@@ -21,6 +23,10 @@ export class MyTriangle extends CGFobject {
 		this.indices = [
 			0, 1, 2
 		];
+
+		this.vertices.push(0,1,0);
+        this.normals.push(0,1,0);
+        this.texCoords.push(0.5, 0.5)
 
 		//The defined indices (and corresponding vertices)
 		//will be read in groups of three to draw triangles

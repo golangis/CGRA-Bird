@@ -3,6 +3,9 @@ import { MyPanorama } from "./MyPanorama.js";
 import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 import { MyTerrain } from "./MyTerrain.js";
+import { MyBird } from "./MyBird/MyBird.js";
+import { MyBirdEgg } from "./MyBird/MyBirdEgg.js";
+import { MyNest } from "./MyBird/MyNest.js";
 
 /**
  * MyScene
@@ -65,11 +68,30 @@ export class MyScene extends CGFscene {
     this.terrainShader.setUniformsValues({ uSampler2: 1 });
     this.terrainShader.setUniformsValues({ uSampler3: 2 });
 
+    // Bird
+    this.bird = new MyBird(this);
+    this.birdAppearance = new CGFappearance(this);
+
+
+    // Bird Egg
+    this.eggTexture = new CGFtexture(this, "images/textures/egg/egg1.jpg");
+    this.eggAppearance = new CGFappearance(this);
+    this.eggAppearance.setTexture(this.eggTexture);
+    this.birdEgg = new MyBirdEgg(this, this.eggAppearance);
+
+    // Nest
+    this.nestTexture = new CGFtexture(this, "images/textures/nest/nest1.jpeg");
+    this.nestAppearance = new CGFappearance(this);
+    this.nestAppearance.setTexture(this.nestTexture);
+    this.nest = new MyNest(this, this.nestAppearance);
+
     this.setUpdatePeriod(50);
   }
   initLights() {
     this.lights[0].setPosition(15, 0, 5, 1);
-    this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
+    this.lights[0].setDiffuse(1, 1, 1, 1);
+    this.lights[0].setAmbient(1, 1, 1, 1);
+    this.lights[0].setSpecular(1, 1, 1, 1);
     this.lights[0].enable();
     this.lights[0].update();
   }
@@ -83,14 +105,26 @@ export class MyScene extends CGFscene {
     );
   }
   setDefaultAppearance() {
-    this.setAmbient(0.2, 0.4, 0.8, 1.0);
-    this.setDiffuse(0.2, 0.4, 0.8, 1.0);
-    this.setSpecular(0.2, 0.4, 0.8, 1.0);
-    this.setShininess(10.0);
+    this.setAmbient(1, 1, 1, 1.0);
+    this.setDiffuse(1, 1, 1, 1.0);
+    this.setSpecular(1, 1, 1, 1.0);
+    this.setShininess(15.0);
   }
 
   updateSphere() {
     this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
+  }
+
+  updateMyBird() {
+    this.bird = new MyBird(this, this.birdAppearance);
+  }
+  
+  updateMyBirdEgg() {
+    this.birdEgg = new MyBirdEgg(this, this.eggAppearence);
+  }
+  
+  updateMyNest() {
+    this.nest = new MyNest(this, this.nestAppearance);
   }
 
   updatePanorama() {
@@ -108,6 +142,7 @@ export class MyScene extends CGFscene {
   display() {
     // ---- BEGIN Background, camera and axis setup
     // Clear image and depth buffer everytime we update the scene
+    this.lights[0].update() 
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
     this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
     // Initialize Model-View matrix as identity (no transformation
@@ -115,7 +150,6 @@ export class MyScene extends CGFscene {
     this.loadIdentity();
     // Apply transformations corresponding to the camera position relative to the origin
     this.applyViewMatrix();
-
     // Draw axis
     if (this.displayAxis) this.axis.display();
 
@@ -156,8 +190,10 @@ export class MyScene extends CGFscene {
 
     this.sphereAppearance.apply();
     // this.sphere.enableNormalViz()
-    this.sphere.display();
-
+    //this.sphere.display();
+   this.bird.display();
+    //this.nest.display();
+    //this.birdEgg.display();
     this.pushMatrix();
     this.translate(
       this.camera.position[0],
