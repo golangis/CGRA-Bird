@@ -29,6 +29,8 @@ export class MyBird extends CGFobject {
     this.scaleFactor = scaleFactor;
 
     this.oscillatoryY = 0;
+    this.velocity = 0;
+    this.wingAngleVariation = 0;
   }
 
   setBody() {
@@ -89,11 +91,16 @@ export class MyBird extends CGFobject {
     this.wingAppearence = new CGFappearance(this.scene);
     this.wingAppearence.setTexture(this.wingTexture)
     this.wingAppearence.setAmbient(0.5, 0.5, 0.5, 1.0);
-    this.wings = new BirdWing(this.scene, this.wingAppearence)  
+    this.wings = new BirdWing(this.scene, this.wingAppearence)
+
+    this.leftWing = new BirdWing(this.scene, this.wingTexture);
+    this.rightWing = new BirdWing(this.scene, this.wingTexture);
   }
 
   update(timeSinceAppStart) {
     this.oscillatoryY = Math.cos((timeSinceAppStart * this.speedFactor));
+    this.velocity = 0;
+    this.wingAngleVariation = Math.cos((timeSinceAppStart * this.speedFactor * (1 + this.velocity)));
   }
 
   updateFactors(speedFactor, scaleFactor) {
@@ -116,7 +123,18 @@ export class MyBird extends CGFobject {
     this.leg.display()
     this.hat.display()
     this.tail.display()
-    this.wings.display()
+    this.scene.pushMatrix()
+    this.scene.translate(0, .4, -1.5);
+    this.scene.rotate(-Math.PI/2.0 * this.wingAngleVariation /2,1,0,0);
+    this.leftWing.display();
+    this.scene.popMatrix();
+
+    this.scene.pushMatrix();
+    this.scene.scale(-1, 1, -1);
+    this.scene.translate(0, .4, -1.5);
+    this.scene.rotate(-Math.PI/2.0 * this.wingAngleVariation /2,1,0,0);
+    this.rightWing.display();
+    this.scene.popMatrix()
 
     this.scene.popMatrix();
   }

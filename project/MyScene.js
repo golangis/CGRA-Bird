@@ -123,7 +123,7 @@ export class MyScene extends CGFscene {
   }
 
   updateMyBird() {
-    this.bird = new MyBird(this, this.birdAppearance);
+    // this.bird = new MyBird(this, this.birdAppearance);
   }
   
   updateMyBirdEgg() {
@@ -200,7 +200,7 @@ export class MyScene extends CGFscene {
     this.setActiveShader(this.defaultShader)
     this.popMatrix();
 
-    
+
     this.pushMatrix();
     this.bird.display();
     this.popMatrix();
