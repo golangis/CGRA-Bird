@@ -35,7 +35,7 @@ export class MyScene extends CGFscene {
     this.terrainDivisions = 30
     this.terrain = new MyTerrain(this, this.terrainDivisions);
     this.terrainShader = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
-    this.terrainMap = new CGFtexture(this, "images/heightmap.jpg");
+    this.terrainMap = new CGFtexture(this, "images/squaredHeightmap.jpg");
     this.terrainAltimetry = new CGFtexture(this, "images/altimetry.png");
 
     this.sphereSlices = 40
