@@ -7,11 +7,11 @@ export class BirdBody extends CGFobject {
     this.body = new MySphere(scene, 40, 40, 1.5, false)
     this.frontFur = new MySphere(scene, 40, 40, 1.5, false, Math.PI)
     this.appearence = appearence  
-      this.frontTexture = new CGFtexture(this.scene, './images/textures/bird/frontFur.png')
-      this.frontAppearance = new CGFappearance(this.scene);
-      this.frontAppearance.setTexture(this.frontTexture)
+    this.frontTexture = new CGFtexture(this.scene, './images/textures/bird/frontFur.png')
+    this.frontAppearance = new CGFappearance(this.scene);
+    this.frontAppearance.setTexture(this.frontTexture)
 
-      this.frontAppearance.setTextureWrap('REPEAT', 'REPEAT');
+    this.frontAppearance.setTextureWrap('REPEAT', 'REPEAT');
 }
   
 

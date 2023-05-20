@@ -68,9 +68,14 @@ export class MyScene extends CGFscene {
     this.terrainShader.setUniformsValues({ uSampler2: 1 });
     this.terrainShader.setUniformsValues({ uSampler3: 2 });
 
+    //BirdAnimation
+    this.birdSpeedFactor = 1.0
+    this.birdScaleFactor = 1.0
+
     // Bird
-    this.bird = new MyBird(this);
+    this.bird = new MyBird(this, [60, -64.5, 0], this.birdSpeedFactor, this.birdScaleFactor);
     this.birdAppearance = new CGFappearance(this);
+
 
 
     // Bird Egg
@@ -86,6 +91,8 @@ export class MyScene extends CGFscene {
     this.nest = new MyNest(this, this.nestAppearance);
 
     this.setUpdatePeriod(50);
+
+    this.appStartTime=Date.now(); 
   }
   initLights() {
     this.lights[0].setPosition(15, 0, 5, 1);
@@ -97,11 +104,11 @@ export class MyScene extends CGFscene {
   }
   initCameras() {
     this.camera = new CGFcamera(
-      1.0,
+      0.5,
       0.1,
       1000,
-      vec3.fromValues(50, 10, 15),
-      vec3.fromValues(0, 0, 0)
+      vec3.fromValues(-20, -30, -50),
+      vec3.fromValues(60, -64.5, 0)
     );
   }
   setDefaultAppearance() {
@@ -111,8 +118,8 @@ export class MyScene extends CGFscene {
     this.setShininess(15.0);
   }
 
-  updateSphere() {
-    this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
+  updateBirdFactors() {
+    this.bird.updateFactors(this.birdSpeedFactor, this.birdScaleFactor);
   }
 
   updateMyBird() {
@@ -137,6 +144,11 @@ export class MyScene extends CGFscene {
 
   update(t) {
     this.terrainShader.setUniformsValues({ timeFactor: t/ 100 % 100 })
+
+    let timeSinceAppStart = (t-this.appStartTime)/1000.0;
+
+    // let deltaTime =timeSinceAppStart- this.lastTimeSinceAppStart;
+    this.bird.update(timeSinceAppStart);
   }
 
   display() {
@@ -188,10 +200,10 @@ export class MyScene extends CGFscene {
     this.setActiveShader(this.defaultShader)
     this.popMatrix();
 
-    this.sphereAppearance.apply();
-    // this.sphere.enableNormalViz()
-    //this.sphere.display();
-   this.bird.display();
+    
+    this.pushMatrix();
+    this.bird.display();
+    this.popMatrix();
     //this.nest.display();
     //this.birdEgg.display();
     this.pushMatrix();

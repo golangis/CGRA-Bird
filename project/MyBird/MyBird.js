@@ -9,7 +9,7 @@ import { BirdTail } from './BirdParts/BirdTail.js'
 import { BirdWing } from './BirdParts/BirdWing.js'
 
 export class MyBird extends CGFobject {
-  constructor(scene, movingVelocity, rotationRight, rotationLeft) {
+  constructor(scene, position, speedFactor, scaleFactor) {
     super(scene)
 
     this.setBody()
@@ -20,7 +20,15 @@ export class MyBird extends CGFobject {
     this.setLegs()
     this.setHat()
     this.setTail()
-    
+
+    this.x = position[0];
+    this.y = position[1];
+    this.z = position[2];
+
+    this.speedFactor = speedFactor;
+    this.scaleFactor = scaleFactor;
+
+    this.oscillatoryY = 0;
   }
 
   setBody() {
@@ -84,9 +92,22 @@ export class MyBird extends CGFobject {
     this.wings = new BirdWing(this.scene, this.wingAppearence)  
   }
 
+  update(timeSinceAppStart) {
+    this.oscillatoryY = Math.cos((timeSinceAppStart * this.speedFactor));
+  }
+
+  updateFactors(speedFactor, scaleFactor) {
+    this.speedFactor = speedFactor;
+    this.scaleFactor = scaleFactor;
+  }
+
 
   display() {
     this.scene.pushMatrix()
+    
+    this.scene.translate(this.x, this.y + this.oscillatoryY, this.z);
+
+    this.scene.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
     
     this.body.display()
     this.head.display()
