@@ -1,4 +1,11 @@
-import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFshader, CGFtexture } from "../lib/CGF.js";
+import {
+  CGFscene,
+  CGFcamera,
+  CGFaxis,
+  CGFappearance,
+  CGFshader,
+  CGFtexture,
+} from "../lib/CGF.js";
 import { MyPanorama } from "./MyPanorama.js";
 import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
@@ -17,7 +24,7 @@ export class MyScene extends CGFscene {
   }
   init(application) {
     super.init(application);
-    
+
     this.initCameras();
     this.initLights();
 
@@ -32,22 +39,38 @@ export class MyScene extends CGFscene {
     //Initialize scene objects
     this.axis = new CGFaxis(this);
 
-    this.terrainDivisions = 30
+    this.terrainDivisions = 30;
     this.terrain = new MyTerrain(this, this.terrainDivisions);
-    this.terrainShader = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
+    this.terrainShader = new CGFshader(
+      this.gl,
+      "shaders/terrain.vert",
+      "shaders/terrain.frag"
+    );
     this.terrainMap = new CGFtexture(this, "images/squaredHeightmap.jpg");
     this.terrainAltimetry = new CGFtexture(this, "images/altimetry.png");
 
-    this.sphereSlices = 40
-    this.sphereStacks = 40
-    this.sphereRadius = 2
-    this.sphereInside = false
-    this.sphere = new MySphere(this, this.sphereSlices, this.sphereStacks, this.sphereRadius, this.sphereInside)
+    this.sphereSlices = 40;
+    this.sphereStacks = 40;
+    this.sphereRadius = 2;
+    this.sphereInside = false;
+    this.sphere = new MySphere(
+      this,
+      this.sphereSlices,
+      this.sphereStacks,
+      this.sphereRadius,
+      this.sphereInside
+    );
 
-    this.panoramaTexture = "images/panorama4.jpg"
-    this.panoramaSlices = 80
-    this.panoramaStacks = 80
-    this.panorama = new MyPanorama(this, this.panoramaTexture, this.panoramaSlices, this.panoramaStacks, 200)
+    this.panoramaTexture = "images/panorama4.jpg";
+    this.panoramaSlices = 80;
+    this.panoramaStacks = 80;
+    this.panorama = new MyPanorama(
+      this,
+      this.panoramaTexture,
+      this.panoramaSlices,
+      this.panoramaStacks,
+      200
+    );
 
     //Objects connected to MyInterface
     this.displayAxis = true;
@@ -58,30 +81,31 @@ export class MyScene extends CGFscene {
     this.texture = new CGFtexture(this, "images/terrain.jpg");
     this.appearance = new CGFappearance(this);
     this.appearance.setTexture(this.texture);
-    this.appearance.setTextureWrap('REPEAT', 'REPEAT');
+    this.appearance.setTextureWrap("REPEAT", "REPEAT");
 
     this.sphereTexture = new CGFtexture(this, "images/earth.jpg");
     this.sphereAppearance = new CGFappearance(this);
     this.sphereAppearance.setTexture(this.sphereTexture);
-    this.sphereAppearance.setTextureWrap('REPEAT', 'REPEAT');
+    this.sphereAppearance.setTextureWrap("REPEAT", "REPEAT");
 
     this.terrainShader.setUniformsValues({ uSampler2: 1 });
     this.terrainShader.setUniformsValues({ uSampler3: 2 });
 
     //BirdAnimation
-    this.birdSpeedFactor = 1.0
-    this.birdScaleFactor = 1.0
+    this.birdSpeedFactor = 1.0;
+    this.birdScaleFactor = 1.0;
 
     // Bird
-    this.bird = new MyBird(this, [60, -64.5, 0], this.birdSpeedFactor, this.birdScaleFactor);
+    this.bird = new MyBird(
+      this,
+      [60, -64.5, 0],
+      this.birdSpeedFactor,
+      this.birdScaleFactor
+    );
     this.birdAppearance = new CGFappearance(this);
-
-
 
     // Bird Eggs
     this.eggs = new MyEggs(this, 4);
-
-
 
     // Nest
     this.nestTexture = new CGFtexture(this, "images/textures/nest/nest1.jpeg");
@@ -91,7 +115,7 @@ export class MyScene extends CGFscene {
 
     this.setUpdatePeriod(50);
 
-    this.appStartTime=Date.now(); 
+    this.appStartTime = Date.now();
     this.lastTimeSinceAppStart = this.appStartTime;
   }
   initLights() {
@@ -125,14 +149,19 @@ export class MyScene extends CGFscene {
   updateMyBird() {
     // this.bird = new MyBird(this, this.birdAppearance);
   }
-  
 
   updateMyNest() {
     this.nest = new MyNest(this, this.nestAppearance);
   }
 
   updatePanorama() {
-    this.panorama = new MyPanorama(this, this.panoramaTexture, this.panoramaSlices, this.panoramaStacks, 200)
+    this.panorama = new MyPanorama(
+      this,
+      this.panoramaTexture,
+      this.panoramaSlices,
+      this.panoramaStacks,
+      200
+    );
   }
 
   updateTerrain() {
@@ -143,21 +172,21 @@ export class MyScene extends CGFscene {
     var text = "Keys pressed: ";
     var keysPressed = false;
 
-    if (this.gui.isKeyPressed("KeyW")){
+    if (this.gui.isKeyPressed("KeyW")) {
       text += " W ";
       keysPressed = true;
     }
-    if (this.gui.isKeyPressed("KeyS")){
+    if (this.gui.isKeyPressed("KeyS")) {
       text += " S ";
       keysPressed = true;
     }
-    if (keysPressed) console.log(text)
+    if (keysPressed) console.log(text);
   }
 
   update(t) {
-    this.terrainShader.setUniformsValues({ timeFactor: t/ 100 % 100 })
+    this.terrainShader.setUniformsValues({ timeFactor: (t / 100) % 100 });
 
-    let timeSinceAppStart = (t-this.appStartTime)/1000.0;
+    let timeSinceAppStart = (t - this.appStartTime) / 1000.0;
     let deltaTime = timeSinceAppStart - this.lastTimeSinceAppStart;
     this.lastTimeSinceAppStart = timeSinceAppStart;
 
@@ -166,22 +195,18 @@ export class MyScene extends CGFscene {
 
     this.checkKeys();
 
-    if (this.gui.isKeyPressed("KeyW"))
-      this.bird.accelerate(1);
-    if (this.gui.isKeyPressed("KeyS"))
-      this.bird.accelerate(-1)
-    if (this.gui.isKeyPressed("KeyD"))
-      this.bird.turn(-1);
-    if (this.gui.isKeyPressed("KeyA"))
-      this.bird.turn(1)
-    if (this.gui.isKeyPressed("KeyR"))
-      this.bird.reset()
+    if (this.gui.isKeyPressed("KeyW")) this.bird.accelerate(1);
+    if (this.gui.isKeyPressed("KeyS")) this.bird.accelerate(-1);
+    if (this.gui.isKeyPressed("KeyD")) this.bird.turn(-1);
+    if (this.gui.isKeyPressed("KeyA")) this.bird.turn(1);
+    if (this.gui.isKeyPressed("KeyR")) this.bird.reset();
+    if (this.gui.isKeyPressed("KeyP")) this.bird.catchEgg(timeSinceAppStart);
   }
 
   display() {
     // ---- BEGIN Background, camera and axis setup
     // Clear image and depth buffer everytime we update the scene
-    this.lights[0].update() 
+    this.lights[0].update();
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
     this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
     // Initialize Model-View matrix as identity (no transformation
@@ -217,30 +242,33 @@ export class MyScene extends CGFscene {
 
     this.pushMatrix();
     this.appearance.apply();
-    this.translate(0,-100,0);
+    this.translate(0, -100, 0);
     this.scale(400, 400, 400);
-    this.rotate(-Math.PI/2.0,1,0,0);
-    this.setActiveShader(this.terrainShader)
+    this.rotate(-Math.PI / 2.0, 1, 0, 0);
+    this.setActiveShader(this.terrainShader);
     this.terrainMap.bind(1);
     this.terrainAltimetry.bind(2);
     this.terrain.display();
-    this.setActiveShader(this.defaultShader)
+    this.setActiveShader(this.defaultShader);
     this.popMatrix();
-
 
     this.pushMatrix();
     this.bird.display();
+    this.popMatrix()
+    this.pushMatrix();
     this.eggs.display();
+    this.popMatrix();
+    this.pushMatrix();
+    this.translate(80, -67.8, 20);
     this.nest.display();
     this.popMatrix();
-    
- 
+
     this.pushMatrix();
     this.translate(
       this.camera.position[0],
       this.camera.position[1],
       this.camera.position[2]
-      );
+    );
     this.panorama.display();
     this.popMatrix();
     // ---- END Primitive drawing section
