@@ -147,11 +147,11 @@ export class MyScene extends CGFscene {
     var text = "Keys pressed: ";
     var keysPressed = false;
 
-    if (this.gui.isKeyPressed("ArrowUp")){
+    if (this.gui.isKeyPressed("KeyW")){
       text += " W ";
       keysPressed = true;
     }
-    if (this.gui.isKeyPressed("ArrowDown")){
+    if (this.gui.isKeyPressed("KeyS")){
       text += " S ";
       keysPressed = true;
     }
@@ -170,13 +170,13 @@ export class MyScene extends CGFscene {
 
     this.checkKeys();
 
-    if (this.gui.isKeyPressed("ArrowUp"))
+    if (this.gui.isKeyPressed("KeyW"))
       this.bird.accelerate(1);
-    if (this.gui.isKeyPressed("ArrowDown"))
+    if (this.gui.isKeyPressed("KeyS"))
       this.bird.accelerate(-1)
-    if (this.gui.isKeyPressed("ArrowRight"))
+    if (this.gui.isKeyPressed("KeyD"))
       this.bird.turn(-1);
-    if (this.gui.isKeyPressed("ArrowLeft"))
+    if (this.gui.isKeyPressed("KeyA"))
       this.bird.turn(1)
     if (this.gui.isKeyPressed("KeyR"))
       this.bird.reset()
