@@ -111,7 +111,7 @@ export class MyScene extends CGFscene {
     this.nestTexture = new CGFtexture(this, "images/textures/nest/nest1.jpeg");
     this.nestAppearance = new CGFappearance(this);
     this.nestAppearance.setTexture(this.nestTexture);
-    this.nest = new MyNest(this, this.nestAppearance);
+    this.nest = new MyNest(this, this.nestAppearance, [80, -68, 20]);
 
     this.setUpdatePeriod(50);
 
@@ -151,7 +151,7 @@ export class MyScene extends CGFscene {
   }
 
   updateMyNest() {
-    this.nest = new MyNest(this, this.nestAppearance);
+    this.nest = new MyNest(this, this.nestAppearance, [80, -68, 20]);
   }
 
   updatePanorama() {
@@ -190,8 +190,8 @@ export class MyScene extends CGFscene {
     let deltaTime = timeSinceAppStart - this.lastTimeSinceAppStart;
     this.lastTimeSinceAppStart = timeSinceAppStart;
 
-    // let deltaTime =timeSinceAppStart- this.lastTimeSinceAppStart;
     this.bird.update(timeSinceAppStart, deltaTime);
+    this.nest.update(timeSinceAppStart, deltaTime);
 
     this.checkKeys();
 
@@ -201,21 +201,24 @@ export class MyScene extends CGFscene {
     if (this.gui.isKeyPressed("KeyA")) this.bird.turn(1);
     if (this.gui.isKeyPressed("KeyR")) this.bird.reset();
     if (this.gui.isKeyPressed("KeyP")) this.bird.catchEgg(timeSinceAppStart);
+    if (this.gui.isKeyPressed("KeyO")) this.bird.dropEgg();
+  }
+
+  checkDropCollisions(position) {
+    this.nest.addEgg(this.bird.egg, position)
+    this.bird.egg = null;
   }
 
   checkCatchCollisions(x, z) {
-    // console.log(x, z)
-
     for (let index = 0; index < this.eggs.eggs.length; index++) {
       const egg = this.eggs.eggs[index];
-      
-      if ((Math.abs(x - egg.x) < 1.0) && (Math.abs(z - egg.z) < 10.0)) {
+
+      if (Math.sqrt((x - egg.x)*(x - egg.x) + (z - egg.z)*(z - egg.z)) < 10.0) {
         this.eggs.eggs = this.eggs.eggs.filter(function(e) { return e !== egg })
         this.bird.addEgg(egg);
         break
       }
 
-      
     }
   }
 
@@ -275,7 +278,6 @@ export class MyScene extends CGFscene {
     this.eggs.display();
     this.popMatrix();
     this.pushMatrix();
-    this.translate(80, -68, 20);
     this.nest.display();
     this.popMatrix();
 

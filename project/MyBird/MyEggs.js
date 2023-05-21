@@ -9,8 +9,6 @@ export class MyEggs extends CGFobject {
     this.createEggs(num);
   }
 
-  checkCollisions;
-
   createEggs(num) {
     var positions = [
       [60, -69.2, -10],

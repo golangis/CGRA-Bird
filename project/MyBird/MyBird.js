@@ -170,6 +170,11 @@ export class MyBird extends CGFobject {
     this.animationStartTimestamp = timeSinceAppStart;
   }
 
+  dropEgg(){
+    if (this.egg == null) return
+    this.scene.checkDropCollisions([this.x, this.y, this.z])
+  }
+
   addEgg(egg) {
     this.egg = egg;
     this.egg.setPosition([0, -1.65*this.scaleFactor, 0]);
