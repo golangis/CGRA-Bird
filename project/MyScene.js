@@ -229,11 +229,11 @@ export class MyScene extends CGFscene {
 
 
     this.pushMatrix();
+    this.bird.display();
     this.eggs.display();
-    //this.bird.display();
+    this.nest.display();
     this.popMatrix();
     
-    //this.nest.display();
  
     this.pushMatrix();
     this.translate(

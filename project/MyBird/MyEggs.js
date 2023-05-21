@@ -26,7 +26,7 @@ export class MyEggs extends CGFobject {
 
     display() {
         this.appearance.apply()
-        this.eggs[0].scene.translate(60, -66, 20)
+        this.eggs[0].scene.translate(60, -67.8, 20)
         this.eggs[0].display()
         this.eggs[1].scene.translate(15, 0, 20)
         this.eggs[1].display()

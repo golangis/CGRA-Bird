@@ -4,8 +4,8 @@ import { MySphere } from '../MySphere.js'
 export class MyBirdEgg extends CGFobject {
   constructor(scene, appearence) {
     super(scene);
-    this.birdEggDown = new MySphere(scene, 40, 40, 4, false, Math.PI)
-    this.birdEggUp = new MySphere(scene, 40, 40, 4, false, Math.PI)
+    this.birdEggDown = new MySphere(scene, 40, 40, 2, false, Math.PI)
+    this.birdEggUp = new MySphere(scene, 40, 40, 2, false, Math.PI)
     this.appearence = appearence  
     }
 
