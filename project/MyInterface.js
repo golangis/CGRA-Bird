@@ -38,7 +38,7 @@ export class MyInterface extends CGFinterface {
       .name("Stacks")
       .onChange(this.scene.updatePanorama.bind(this.scene));
     var f2 = this.gui.addFolder("Terrain");
-    f2.add(this.scene, "terrainDivisions", 3, 150)
+    f2.add(this.scene, "terrainDivisions", 3, 200)
       .name("Divisions")
       .onChange(this.scene.updateTerrain.bind(this.scene));
 

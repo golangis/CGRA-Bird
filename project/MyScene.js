@@ -7,7 +7,6 @@ import {
   CGFtexture,
 } from "../lib/CGF.js";
 import { MyPanorama } from "./MyPanorama.js";
-import { MyPlane } from "./MyPlane.js";
 import { MySphere } from "./MySphere.js";
 import { MyTerrain } from "./MyTerrain.js";
 import { MyBird } from "./MyBird/MyBird.js";
@@ -41,7 +40,7 @@ export class MyScene extends CGFscene {
     //Initialize scene objects
     this.axis = new CGFaxis(this);
 
-    this.terrainDivisions = 30
+    this.terrainDivisions = 150
     this.terrain = new MyTerrain(this, this.terrainDivisions);
     this.terrainShader = new CGFshader(this.gl, "shaders/terrain.vert", "shaders/terrain.frag");
     this.terrainMap = new CGFtexture(this, "images/squaredHeightmap.jpg");
@@ -61,8 +60,8 @@ export class MyScene extends CGFscene {
       [[67.05, 367.21], 0], [[104.33, 0.8], 0], [[109.26, 66.31], 0], [[109.77, 101.63], 0], [[104.89, 162.54], 1],
       [[112.34, 207.37], 1], [[124.35, 257.12], 0], [[107.45, 323.65], 0], [[118.11, 352.27], 1], [[168.88, 10.05], 0],
       [[163.1, 68.25], 0], [[166.76, 104.4], 0], [[151.42, 173.88], 0], [[173.18, 214.19], 0], [[152.22, 269.53], 0],
-      [[168.86, 305.37], 1], [[156.46, 354.67], 1], [[200.46, 9.92], 0], [[200.55, 61.18], 1], [[204.97, 122.74], 1],
-      [[219.93, 171.08], 1], [[204.38, 222.06], 1], [[206.15, 269.37], 1], [[205.11, 308.63], 1], [[203.43, 358.97], 1],
+      [[168.86, 305.37], 1], [[156.46, 354.67], 1], [[200.46, 9.92], 0], [[200.55, 61.18], 1], 
+      [[204.38, 222.06], 1], [[206.15, 269.37], 1], [[205.11, 308.63], 1], [[203.43, 358.97], 1],
       [[264.81, 8.39], 0], [[265.34, 56.0], 0], [[261.41, 100.2], 1], [[262.11, 163.96], 1], [[259.43, 201.39], 0],
       [[255.16, 267.19], 0], [[271.94, 311.64], 0], [[264.04, 368.46], 0], [[300.76, 13.59], 1], [[301.88, 71.15], 0],
       [[313.56, 107.06], 0], [[311.29, 161.23], 1], [[307.13, 207.28], 1], [[310.13, 263.83], 0], [[314.32, 316.01], 1],
