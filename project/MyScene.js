@@ -205,15 +205,17 @@ export class MyScene extends CGFscene {
   }
 
   checkDropCollisions(position) {
-    this.nest.addEgg(this.bird.egg, position)
-    this.bird.egg = null;
+    if (Math.sqrt((position[0] - this.nest.x)*(position[0] - this.nest.x) + (position[2]- this.nest.z)*(position[2]- this.nest.z)) < 10.0) {
+      this.nest.addEgg(this.bird.egg, position)
+      this.bird.egg = null;
+    }
   }
 
   checkCatchCollisions(x, z) {
     for (let index = 0; index < this.eggs.eggs.length; index++) {
       const egg = this.eggs.eggs[index];
 
-      if (Math.sqrt((x - egg.x)*(x - egg.x) + (z - egg.z)*(z - egg.z)) < 10.0) {
+      if (Math.sqrt((x - egg.x)*(x - egg.x) + (z - egg.z)*(z - egg.z)) < 1.5) {
         this.eggs.eggs = this.eggs.eggs.filter(function(e) { return e !== egg })
         this.bird.addEgg(egg);
         break
