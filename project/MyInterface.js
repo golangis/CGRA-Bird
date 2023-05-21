@@ -27,7 +27,7 @@ export class MyInterface extends CGFinterface {
     f0.add(this.scene, "birdSpeedFactor", 0.1, 3)
       .name("Speed Factor")
       .onChange(this.scene.updateBirdFactors.bind(this.scene));
-    f0.add(this.scene, "birdScaleFactor", 0.1, 5)
+    f0.add(this.scene, "birdScaleFactor", 0.5, 3)
       .name("Scale Factor")
       .onChange(this.scene.updateBirdFactors.bind(this.scene));
     var f1 = this.gui.addFolder("Panorama");
