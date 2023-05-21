@@ -7,7 +7,7 @@ import { MyQuad } from "./MyQuad.js";
  * @param scene - Reference to MyScene object
  */
 export class MyBillboard extends CGFobject {
-	constructor(scene, x, y, z) {
+	constructor(scene, x, y, z, rot) {
 		super(scene);
         
         this.quad = new MyQuad(scene);
@@ -21,6 +21,7 @@ export class MyBillboard extends CGFobject {
         this.appearance.setTexture(this.texture);
         this.appearance.setTextureWrap('REPEAT', 'REPEAT');
 
+        this.rot = rot
         
     }
 
@@ -37,6 +38,7 @@ export class MyBillboard extends CGFobject {
             })
 
         this.appearance.apply();
+        this.scene.rotate(this.rot, 0, 1, 0);
         this.quad.display()
 
         this.scene.popMatrix()

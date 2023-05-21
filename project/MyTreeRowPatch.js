@@ -12,20 +12,19 @@ export class MyTreeRowPatch extends CGFobject {
         
         this.trees = []
 
-        for (let i = 0; i < 6; i++) {
-            this.trees.push(new MyBillboard(scene, i*2 + (Math.floor(Math.random() * 4) / 4 - 0.5), 0, (Math.floor(Math.random() * 4) / 4 - 0.5)))
-        }
-
         this.x = x;
         this.z = z;
+        
+        for (let i = 0; i < 6; i++) {
+            this.trees.push(new MyBillboard(scene, this.x + i*8 + (Math.floor(Math.random() * 4) / 4 - 0.5), 0, this.z + (Math.floor(Math.random() * 4) / 4 - 0.5), Math.PI/16 * (Math.random() * 6 - 3)))
+        }
+
     }
 
     display() {
 
         // Quad
         this.scene.pushMatrix()
-        
-        this.scene.translate(this.x, 0, this.z)
 
         for (let i = 0; i < this.trees.length; i++) {
             this.trees[i].display()

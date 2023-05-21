@@ -16,7 +16,7 @@ export class MyTreeGroupPatch extends CGFobject {
 
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                this.trees.push(new MyBillboard(scene, this.x + i*8 + (Math.floor(Math.random() * 4) / 4 - 0.5), 0, this.z + j*8 + (Math.floor(Math.random() * 4) / 4 - 0.5)))
+                this.trees.push(new MyBillboard(scene, this.x + i*8 + (Math.floor(Math.random() * 4) / 4 - 0.5), 0, this.z + j*8 + (Math.floor(Math.random() * 4) / 4 - 0.5), Math.PI/16 * (Math.random() * 6 - 3)))
             }
         }
 
