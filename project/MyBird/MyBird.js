@@ -45,6 +45,8 @@ export class MyBird extends CGFobject {
 
     this.performingAnimation = false;
     this.animationStartTimestamp;
+
+    this.egg = null;
   }
 
   setBody() {
@@ -153,10 +155,12 @@ export class MyBird extends CGFobject {
   }
 
   turn(v) {
+    if (this.performingAnimation) return
     this.turning = v;
   }
 
   accelerate(v) {
+    if (this.performingAnimation) return
     this.accelerating = v;
   }
 
@@ -164,6 +168,11 @@ export class MyBird extends CGFobject {
     if (this.performingAnimation) return;
     this.performingAnimation = true;
     this.animationStartTimestamp = timeSinceAppStart;
+  }
+
+  addEgg(egg) {
+    this.egg = egg;
+    this.egg.setPosition([0, -1.65*this.scaleFactor, 0]);
   }
 
   update(timeSinceAppStart, deltaTime) {
@@ -191,11 +200,11 @@ export class MyBird extends CGFobject {
 
       var deltaDescend = -(deltaAnimation > 1 ? 2-deltaAnimation : deltaAnimation);
 
-      if (deltaDescend < -0.8) {
-        console.log(this.scene.eggs.eggs)
+      if (deltaDescend < -0.9) {
+        this.scene.checkCatchCollisions(this.x, this.z)
       }
 
-      this.oscillatoryY = deltaDescend * 2;
+      this.oscillatoryY = deltaDescend * 3;
       if (deltaAnimation > 2) {
         this.performingAnimation = false;
       }
@@ -211,6 +220,11 @@ export class MyBird extends CGFobject {
     this.scene.pushMatrix();
 
     this.scene.translate(this.x, this.y + this.oscillatoryY, this.z);
+
+    if (this.egg) {
+      this.egg.setPosition([0, -1.65, 0])
+      this.egg.display();
+    }
 
     this.scene.rotate(this.rotation, 0, 1, 0);
     this.scene.scale(0.3, 0.3, 0.3);

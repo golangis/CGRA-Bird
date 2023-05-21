@@ -203,6 +203,22 @@ export class MyScene extends CGFscene {
     if (this.gui.isKeyPressed("KeyP")) this.bird.catchEgg(timeSinceAppStart);
   }
 
+  checkCatchCollisions(x, z) {
+    // console.log(x, z)
+
+    for (let index = 0; index < this.eggs.eggs.length; index++) {
+      const egg = this.eggs.eggs[index];
+      
+      if ((Math.abs(x - egg.x) < 1.0) && (Math.abs(z - egg.z) < 10.0)) {
+        this.eggs.eggs = this.eggs.eggs.filter(function(e) { return e !== egg })
+        this.bird.addEgg(egg);
+        break
+      }
+
+      
+    }
+  }
+
   display() {
     // ---- BEGIN Background, camera and axis setup
     // Clear image and depth buffer everytime we update the scene
@@ -259,7 +275,7 @@ export class MyScene extends CGFscene {
     this.eggs.display();
     this.popMatrix();
     this.pushMatrix();
-    this.translate(80, -67.8, 20);
+    this.translate(80, -68, 20);
     this.nest.display();
     this.popMatrix();
 

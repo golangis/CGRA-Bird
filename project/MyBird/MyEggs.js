@@ -13,10 +13,10 @@ export class MyEggs extends CGFobject {
 
   createEggs(num) {
     var positions = [
-      [60, -67.8, -10],
-      [100, -67.8, 40],
-      [84, -67.8, -20],
-      [70, -67.8, 20],
+      [60, -69.2, -10],
+      [100, -69.2, 40],
+      [84, -69.2, -20],
+      [70, -69.2, 20],
     ];
     for (let i = 0; i < num; i++) {
       this.appearance = new CGFappearance(this.scene);

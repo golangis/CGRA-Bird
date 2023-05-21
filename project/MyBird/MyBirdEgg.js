@@ -13,6 +13,12 @@ export class MyBirdEgg extends CGFobject {
     this.z = position[2];
   }
 
+  setPosition(position) {
+    this.x = position[0];
+    this.y = position[1];
+    this.z = position[2];
+  }
+
   display() {
     this.scene.pushMatrix();
     this.appearence.apply();

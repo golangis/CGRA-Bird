@@ -7,6 +7,8 @@ export class MyNest extends CGFobject {
       this.nest = new MySphere(scene, 40, 40, 7, false, Math.PI)
       this.nestUp = new MySphere(scene, 40, 40, 7, true, Math.PI)
       this.appearence = appearence
+
+      this.eggs = []
     }
 
 
