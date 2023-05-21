@@ -4,7 +4,7 @@ import {CGFobject} from '../lib/CGF.js';
  * @constructor
  * @param scene - Reference to MyScene object
  */
-export class MyQuad extends CGFobject {
+export class MyWingQuad extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
@@ -14,10 +14,10 @@ export class MyQuad extends CGFobject {
 		this.normals = [];
         this.texCoords = []
 		this.vertices = [
-			-4, 4, 0,	//0
-			-4, -4, 0,	//1
-			4, -4, 0,	//2
-			4, 4, 0		//3
+			-0.5, 0.5, 0,	//0
+			-0.5, -0.5, 0,	//1
+			0.5, -0.5, 0,	//2
+			0.5, 0.5, 0		//3
 		];
 
 		//Counter-clockwise reference of vertices

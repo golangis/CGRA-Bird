@@ -13,7 +13,7 @@ export class MyBillboard extends CGFobject {
         this.quad = new MyQuad(scene);
 
         this.x = x;
-        this.y = y + 0.5; // the 0.5 are due to the quad height
+        this.y = y + 4.0; // the 4.0 are due to the quad height
         this.z = z;
 
         this.texture = new CGFtexture(scene, "images/billboardtree.png");
@@ -28,7 +28,6 @@ export class MyBillboard extends CGFobject {
 
         // Quad
         this.scene.pushMatrix()
-        
         this.scene.translate(this.x, this.y, this.z)
 
         this.scene.activeShader.setUniformsValues(

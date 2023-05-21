@@ -1,11 +1,11 @@
 import { CGFobject, CGFappearance, CGFtexture } from "../../../../lib/CGF.js";
 import { MyTriangle } from "../../../project/MyTriangle.js";
-import { MyQuad } from "../../../project/MyQuad.js";
+import { MyWingQuad } from "../../MyWingQuad.js";
 
 export class BirdWing extends CGFobject {
   constructor(scene, appearence) {
     super(scene);
-    this.wingRect = new MyQuad(scene);
+    this.wingRect = new MyWingQuad(scene);
     this.wingTrian = new MyTriangle(scene);
 
     this.appearence = appearence;
