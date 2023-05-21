@@ -14,6 +14,7 @@ import { MyEggs } from "./MyBird/MyEggs.js";
 import { MyNest } from "./MyBird/MyNest.js";
 import { MyTreeGroupPatch } from "./MyTreeGroupPatch.js";
 import { MyTreeRowPatch } from "./MyTreeRowPatch.js";
+import { MyWingQuad } from "./MyWingQuad.js";
 
 /**
  * MyScene
@@ -160,12 +161,20 @@ export class MyScene extends CGFscene {
 
     // Bird Eggs
     this.eggs = new MyEggs(this, 4);
+    this.board = new MyWingQuad(this);
 
     // Nest
     this.nestTexture = new CGFtexture(this, "images/textures/nest/nest.jpg");
     this.nestAppearance = new CGFappearance(this);
     this.nestAppearance.setTexture(this.nestTexture);
     this.nest = new MyNest(this, this.nestAppearance, [80, -68, 20]);
+
+    //Board
+    this.boardTexture = new CGFtexture(this, "images/textures/bird/happybday.png");
+    this.boardAppearance = new CGFappearance(this);
+    this.boardAppearance.setTexture(this.boardTexture);
+    this.boardAppearance.apply()
+    this.board = new MyWingQuad(this);  
 
     this.setUpdatePeriod(50);
 
@@ -182,11 +191,11 @@ export class MyScene extends CGFscene {
   }
   initCameras() {
     this.camera = new CGFcamera(
-      1.4,
+      1,
       0.1,
       1000,
-      vec3.fromValues(-20, -30, -50),
-      vec3.fromValues(60, -64.5, 0)
+      vec3.fromValues(60, -60, 20),
+      vec3.fromValues(70, -64.5, -5)
     );
   }
   setDefaultAppearance() {
@@ -343,6 +352,15 @@ export class MyScene extends CGFscene {
     this.popMatrix();
     this.pushMatrix();
     this.nest.display();
+    this.popMatrix();
+
+    this.pushMatrix();
+    this.translate(90, -65.5, 0);
+    this.rotate(-Math.PI / 2.0, 0, 1, 0);
+    this.scale(30, 10, 10);
+    this.boardAppearance.apply();
+    this.board.display();
+
     this.popMatrix();
 
     this.pushMatrix();
