@@ -28,9 +28,19 @@ export class MyQuad extends CGFobject {
 			3, 1, 0
 		];
 
-		this.vertices.push(0,1,0);
-        this.normals.push(0,1,0);
-        this.texCoords.push(0.5, 0.5)
+		this.normals = [
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, 1
+		]
+
+		this.texCoords = [
+			0, 0,
+			0, 1,
+			1, 1,
+			1, 0,
+		]
 
 		//The defined indices (and corresponding vertices)
 		//will be read in groups of three to draw triangles
