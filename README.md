@@ -8,9 +8,11 @@
 
 ----
 
-  - [tp1](tp1/README.md)
-  - [tp2](tp2/README.md)
-  - [tp3](tp3/README.md)
-  - [tp4](tp4/README.md)
-  - [tp5](tp5/README.md)
-  - [Project](proj/README.md)
+<a href="url"><img src="https://github.com/golangis/CGRA-Bird/raw/master/project/screenshots/project-t10g03-4b.png" align="left" height="300"  ></a>
+## Assignments
+  - [Assignment 1](/tp1/README.md)
+  - [Assignment 2](/tp2/README.md)
+  - [Assignment 3](/tp3/README.md)
+  - [Assignment 4](/tp4/README.md)
+  - [Assignment 5](/tp5/README.md)
+  - [Project - Bird 🦜](/project/README.md)
